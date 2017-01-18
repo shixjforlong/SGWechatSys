@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- <link rel="shortcut icon" href="./favicon.ico" > -->
+</head>
+<body>
+<script type='text/javascript'>
+	var url={
+		"default":"applications"
+	};
+	document.body.onload=function(){
+		var currentHost=window.location.hostname;	
+		
+		if(url[currentHost]){
+			window.localStorage.setItem("indexURL",url[currentHost]);
+			window.location.href=url[currentHost];								
+		}
+		else{
+			window.localStorage.setItem("indexURL",url["default"]);
+			window.location.href=url["default"];
+		}
+	};
+</script>
+</body>
+</html>

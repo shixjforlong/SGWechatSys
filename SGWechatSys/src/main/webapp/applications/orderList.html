@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>外卖订单</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="css/order.css" type="text/css" rel="stylesheet" />
+
+</head>
+<script>
+        var MT_WM = window.MT_WM || {};
+        MT_WM.TimeTracker = {rt: 1484707213626, st: Date.now()};
+        MT_WM.logFirstScreenTime = function () {
+            MT_WM.TimeTracker.fst = Date.now();
+        };
+        window.addEventListener('load', function () {
+            //保存性能时间
+            MT_WM.TimeTracker.lt = Date.now();
+        });
+        MT_WM.STATIC_ROOT = '//xs01.meituan.net/waimai_i/587dbed8';
+        function delayGo(u, t) {
+            setTimeout(function () {
+                if (typeof u == 'string') location = u;
+                else if (typeof u == 'function') u();
+            }, (t == null ? 300 : t));
+        }
+</script>
+<body class="i"> 
+   <header id="header" class="header page-header  ">
+       <div class="header-right"></div>
+       <h1 class="j-page-name page-name">我的订单</h1>
+   </header>
+   <div class="list" id="order-list">
+
+    <div id="j-load" data-page="0" data-type="1" data-hasmore="1" style="display: none;"></div>
+    <script>if (MT_WM.logFirstScreenTime) MT_WM.logFirstScreenTime();</script>
+    </div>
+
+    <div class="user-bar-placeholder"></div>
+    <div id="user-bar-wrap">
+       <div id='friendCard' class="friendcard" style="display: none;">
+           <i class="warn"></i>
+           <span>下单立减2元</span>
+           <i class="close"></i>
+       </div>
+       <div class="user-bar">
+            <a class="user-bar-btn" href="./index.html"><i class="ico-bowl-fill"></i><span
+                    class="user-bar-btn-txt">点餐</span></a>
+            <a class="user-bar-btn user-bar-btn-focus" href="./orderList.html"><i class="ico-paper"></i><span
+                    class="user-bar-btn-txt">订单</span></a>
+            <a class="user-bar-btn" href=""><i class="ico-user"></i><span
+                    class="user-bar-btn-txt">我的</span></a>
+       </div>
+    </div>
+    <script type="text/javascript" src="./orderList.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+    <script>
+       window.onload=function(){
+    	   renderOrderList();
+      }
+    </script>
+</body>
+</html>

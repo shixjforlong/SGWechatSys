@@ -1,0 +1,106 @@
+<html data-cssawait="0"><head>
+<title>外卖点餐</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="X-UA-Compatible" content="edge">
+</head>
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/takeOutOrder.css" type="text/css" rel="stylesheet" />
+<link href="./css/cart.css" type="text/css" rel="stylesheet" />
+<body>
+   <div id="header-container"> 
+     <header id="header" class="header page-header  "> 
+        <h1 class="j-page-name page-name"><span class="j-page-name-marquee page-name-marquee">食国</span></h1> 
+     </header>
+   </div>
+   
+   <div id="actv-sec-container"> 
+      <div id="actv-sec" class="wx-actv-sec"> 
+          <ul class="wx-actv-list j-wx-actv-list" style="margin-top: -10px;"> 
+              <li>
+                <i class="wx-actv-icon">
+                  <img src="http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png" alt="">
+                </i> 
+                <p>满20减3;满30减4;满40减5(在线支付专享)</p>
+              </li>  
+          </ul>
+       </div>
+   </div>
+   
+   <div class="j-menu-tabs menu-tabs"> 
+       <a class="selected" data-inited="true" href="javascript:void(0);">
+          <span>点菜</span>
+       </a>
+       <a data-inited="false" data-from="/wxi/poi/comment?wmpoiid=72894237627709873&amp;apage=2" href="javascript:void(0);">
+          <span>评价</span>
+       </a>
+       <a data-inited="false" data-from="/wxi/restaurantDetail/72894237627709873?apage=1" href="javascript:void(0);">
+          <span>商家</span>
+       </a> 
+   </div>
+   
+   <div id="menuwrap" class="menuwrap">
+        <div id="asidewrap" class="asidewrap" style="height: 580px;">
+        <!-- 商品分类 -->
+         <div id="goodsTypeList" class="taglist" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">  
+           <!--  <div id="tag100" class="j-tag tag" data-key="100">
+              <div class="tag-inner">
+                 <span class="tag-text">  
+                 <img class="tag-icon" src="http://p1.meituan.net/xianfu/10ba72e043ef4eca806cafb1a90a22662048.png" alt="">  热销</span>
+              </div>
+            </div>  -->
+             <div class="cart-placeholder"></div> 
+          </div> 
+        </div>
+       <!-- 根据商品分类 获取相应的商品信息 -->
+        <div id="mainwrap" class="mainwrap" style="height: 614px;">
+        </div> 
+   </div>
+   <!-- 购物车 -->
+   <div id="cart-wrap">
+      <div id="cart-dtl" class="cart-dtl" style="display: none;">
+         <div class="j-cart-dtl-icon cart-dtl-icon">
+            <i class="j-dtl-ico-cart spec-ico-cart ico-cart-active"></i>
+         </div>
+         <div class="cart-dtl-head">
+            <span class="j-cart-dusbin cart-dusbin"><i></i>清空购物车</span>
+         </div>
+         <div class="j-cart-dtl-list cart-dtl-list">
+            <div class="j-cart-dtl-list-inner">
+            </div>
+         </div>
+       </div>
+       <div id="cart" class="cart">
+         <div class="cart-tip">
+            <span id="total" style="display:none;"></span>
+            <span id="flag" style="display:none;"></span>
+            <div class="j-cart-icon cart-icon">
+                <i class="j-ico-cart spec-ico-cart"></i>
+            </div>
+            <div class="j-cart-empty cart-empty">购物车空空如也～</div>
+            <div class="j-cart-noempty cart-noempty" style="display:none;">
+                <span class="j-cart-price cart-price"></span>
+                <br>
+                <span class="cart-shipping">配送费以订单为准</span>
+            </div>
+         </div>
+         <div class="cart-btns">
+             <a class="cart-btn-unavail">
+               <span class="inner">¥20起送</span>
+             </a>
+         </div>
+      </div>
+    </div>
+   
+    <script type="text/javascript" src="./takeOutOrder.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+    <script>
+       window.onload=function(){
+    	   renderTakeOutOrder();
+       }
+    </script>
+</body>
+</html>

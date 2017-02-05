@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>订单确认</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/cart.css" type="text/css" rel="stylesheet" />
+</head>
+<body style="background-color: #efefef;"> 
+   <div id="header-container"> 
+     <header id="header" class="header page-header  "> 
+        <h1 class="j-page-name page-name"><span class="j-page-name-marquee page-name-marquee">订单确认</span></h1> 
+     </header>
+   </div>
+   <div style="font-size:12px;height: 580px;">
+     <!-- 收货地址 -->
+      <div style="background-color: white;height: 80px;margin-top: 12px;">
+        <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
+            <div style="width: 25px;float: left;line-height: 58px;margin-left: 10px;"><img src="./images/add2.jpeg" style="width:25px;"></div>
+            <div style="margin-left: 30px;"><span>选择收货地址</span></div>
+        </div>
+        <div style="height: 40px;line-height: 40px;">
+            <div style="width: 55px;float: left;"><span style="margin-left: -20px;">送达时间</span></div>
+            <div style="margin-right: 10px;text-align: right;color: #4aa1e6;"><span>立即送出(大约15：29送达)</span></div>
+        </div>
+      </div>
+      <!-- 支付方式 积分 -->
+      <div style="background-color: white;height: 80px;margin-top: 12px;">
+        <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
+            <div style="width: 75px;float: left;"><span style="margin-left: 15px;">支付方式</span></div>
+            <div style="margin-right: 10px;text-align: right;"><span>微信支付</span></div>
+        </div>
+        <div style="height: 40px;line-height: 40px;">
+            <div style="width: 75px;float: left;"><span style="margin-left: 15px;">可用积分</span></div>
+            <div style="margin-right: 10px;text-align: right;color: #bbc4cc;"><span>暂无可用积分</span></div>
+        </div>
+      </div>
+       <!-- 订单详情 -->
+      <div style="background-color: white;margin-top: 12px;">
+        <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
+            <div style="width: 75px;float: left;"><span style="margin-left: 15px;">食国</span></div>
+            <div style="margin-right: 10px;text-align: right;color: #bbc4cc;"><span>由 商家 提供配送服务</span></div>
+        </div>
+        <div style="border-bottom: 1px solid #f1e9e9;">
+           <table style="width: 100%;margin-left: 13px;">
+             <tr style="height: 30px;">
+               <td width="70%">红烧茄子饭</td><td width="18%" style="color: #bbc4cc;">x1</td><td width="12%">￥13</td>
+             </tr>
+             <tr style="height: 30px;">
+               <td width="70%">西红柿鸡蛋饭</td><td width="18%" style="color: #bbc4cc;">x1</td><td width="12%">￥15</td>
+             </tr>
+             <tr style="height: 30px;">
+               <td width="70%">小炒肉饭</td><td width="18%" style="color: #bbc4cc;">x1</td><td width="12%">￥15</td>
+             </tr>
+           </table>
+        </div>
+        <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
+            <div style="width: 75px;float: left;"><span style="margin-left: 15px;">配送费</span></div>
+            <div style="margin-right: 10px;text-align: right;"><span>￥5</span></div>
+        </div>
+        <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
+            <div style="width: 75px;float: left;color: #bbc4cc;"><span style="margin-left: 15px;">总计</span><span>￥28</span></div>
+            <div style="margin-right: 10px;text-align: right;"><span>实付</span><span style="color: red;">￥28</span></div>
+        </div>
+      </div>
+     
+   </div>
+    <!-- 支付 -->
+      <div id="pay" class="cart">
+        <div class="cart-tip">
+            <div class="j-cart-empty cart-empty" style="text-align: center;">待支付<span style="color: red;font-size: 16px;">￥28</span></div>
+         </div>
+         <div class="cart-btns">
+             <a class="cart-btn-unavail">
+               <span class="inner" style="background-color: #ffd300;color: #6b450a;">提交订单</span>
+             </a>
+         </div>
+      </div>
+</body>
+</html>

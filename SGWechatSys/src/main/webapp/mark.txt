@@ -11,8 +11,9 @@
                 </div>
                 <div class="j-cart-dtl-list cart-dtl-list">
                     <div class="j-cart-dtl-list-inner">
+                    
+                    
                         <div class="j-fooditem cart-dtl-item" data-orderid="188823054">
-
                             <div class="cart-dtl-item-inner">
                                 <i class="cart-dtl-dot"></i>
 
@@ -25,11 +26,10 @@
                                 </div>
                                 <span class="cart-dtl-price">¥15.5</span>
                             </div>
-
-                            
-                            
-                            
                         </div>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>

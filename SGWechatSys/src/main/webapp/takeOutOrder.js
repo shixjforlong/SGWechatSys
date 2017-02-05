@@ -130,6 +130,11 @@ function getGoodsInfoByTypeId(typeId,typeName){
         						"</a>"
         				);
         			}
+        			//结算
+        			$(".cart-btn-confirm").click(function () {
+        				console.log("111111");
+        				window.location.href='orderConfirm.html';
+        			});
         		});
             	$(".i-remove-food").click(function () {
         			var id=$(this)[0].id.split("_")[1];

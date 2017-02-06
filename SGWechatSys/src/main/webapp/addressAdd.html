@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>新增收货地址</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressAdd.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="wxi"> 
+   <header id="header" class="header page-header  ">
+      <a class="j-back-link back-wrap" href="javascript:;">
+        <i class="icon i-back"></i>
+      </a>
+      <a class="addr-save j-addr-save" href="javascript:void(0);">保存</a>
+      <h1 class="page-name">新增收货地址</h1>
+   </header>
+   <div class="main-wrap">
+    <div class="fill-section-wrap">
+        <h3>联系人</h3>
+        <ul class="fill-section customer-section">
+            <li>
+                <span class="fill-type">姓名：</span>
+                <div class="fill-section-right">
+                    <input type="text" class="fill-input j-name" placeholder="请填写收货人姓名" />
+                    <div class="customer-gender">
+                        <span class="customer-gender-choice" data-gender="0"><i class="i-circle"></i>先生</span>
+                        <span class="customer-gender-choice" data-gender="1"><i class="i-circle"></i>女士</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="fill-type">电话：</span>
+                <div class="fill-section-right fill-phone-right">
+                    <input type="text" class="fill-input j-phone" maxlength="11" placeholder="请填写收餐手机号码" />
+                    <ul class="addr-tip-list j-phone-list"></ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="fill-section-wrap" style="margin-top: -13px;">
+        <h3>收货地址</h3>
+        <ul class="fill-section address-section">
+            <li>
+                <span class="fill-type">详细地址：</span>
+                <div style="display: block; height: 44px;margin-left: 65px;">
+                    <input type="text" style="width:96%;height:42px;line-height:42px;border:0;font-size:14px;"  placeholder="北京市昌平区回龙观紫晶七星广场A130室" />
+                </div>
+            </li>
+        </ul>
+    </div>
+   </div>
+   
+      
+   <script type="text/javascript" src="./addressAdd.js"></script>
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script>
+      window.onload=function(){
+    	 renderAddAddress();
+      }
+   </script>
+</body>
+</html>

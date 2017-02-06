@@ -1,0 +1,230 @@
+body {
+    position: relative;
+    min-height: 100%;
+    background-color: #efefef;
+    color: #2f2f2f;
+}
+#header {
+    background-color: #fff;
+    color: #2f2f2f;
+    border-bottom: none;
+}
+.page-header {
+    text-align: center;
+    position: relative;
+}
+.header {
+    height: 42px;
+    border-bottom: 1px solid #ffd705;
+    background-color: #ffd705;
+}
+.header .back-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 30px 0 8px;
+}
+a {
+    text-decoration: none;
+    outline: none;
+}
+.header .i-back {
+    background-position: 0 -130px;
+}
+.header .i-back {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 11px;
+    float: left;
+}
+.i-back {
+    width: 12px;
+    height: 20px;
+    background-position: 0 -84px;
+}
+.icon {
+    background-image: url(//xs01.meituan.net/waimai_i/img/sprite/icon.562e2a26.png);
+    background-size: 150px 350px;
+    display: inline-block;
+}
+i {
+    font-style: normal;
+}
+.header .header-right {
+    right: 0;
+    padding: 0 10px;
+}
+.header .header-right {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    height: 100%;
+    line-height: 42px;
+}
+.header-right span {
+    color: #2f2f2f;
+    font-size: 14px;
+}
+.header .page-name {
+    color: #2f2f2f;
+}
+.page-name {
+    font-size: 19px;
+    line-height: 42px;
+    color: #6b450a;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 65px;
+    text-align: center;
+}
+.address-add {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    margin: 0px;
+}
+.address-add-font {
+    height: 48px;
+    line-height: 50px;
+    font-size: 15px;
+    color: #000;
+    background: url(//xs01.meituan.net/waimai_i/img/address/address-add1.ceac7fcc.png) no-repeat;
+    background-size: 15px;
+    background-position-y: center;
+    display: inline-block;
+    padding-left: 1.4rem;
+    white-space: nowrap;
+}
+.address-list {
+    margin-top: 15px;
+}
+ul, ol {
+    padding-left: 0;
+    list-style-type: none;
+}
+.address-list li {
+    padding-left: 15px;
+    background-color: #fff;
+}
+.address-list li {
+    padding-left: 15px;
+    background-color: #fff;
+}
+.address-content {
+    border-bottom: 1px solid #f0f0f0;
+    padding-right: 15px;
+}
+.address-selected .address-info {
+    background: url(//xs01.meituan.net/waimai_i/img/address/address-right1.c45f1cc6.png) no-repeat right 32px;
+    -webkit-background-size: 16px 11px;
+    -moz-background-size: 16px 11px;
+    background-size: 16px 11px;
+}
+.address-info {
+    padding: 12px 35px 12px 0px;
+}
+.address-info p.customer-info {
+    color: #a9a9a9;
+}
+.address-info p {
+    line-height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.clearfix {
+    zoom: 1;
+}
+.contect-name {
+    display: inline-block;
+    max-width: 30%;
+    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.contect-gender {
+    display: inline-block;
+    position: absolute;
+}
+.contect-phone {
+    float: right;
+}
+.address-info p.address-dtl {
+    color: #2f2f2f;
+}
+.address-info p {
+    line-height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.address-selected .address-info {
+    background: url(//xs01.meituan.net/waimai_i/img/address/address-right1.c45f1cc6.png) no-repeat right 32px;
+    -webkit-background-size: 16px 11px;
+    -moz-background-size: 16px 11px;
+    background-size: 16px 11px;
+}
+.address-list li.address-noscope {
+    background-color: #f6f6f6;
+}
+.contect-button .edit {
+    margin-right: 14px;
+    background-position: 8px center;
+}
+.contect-button a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url(//xs01.meituan.net/waimai_i/img/address/address-edit_dele.d2d09639.png) no-repeat;
+    -webkit-background-size: 65px 16px;
+    -moz-background-size: 65px 16px;
+    background-size: 65px 16px;
+}
+a {
+    text-decoration: none;
+    outline: none;
+}
+.contect-button .dele {
+    background-position: -41px center;
+}
+.contect-button a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url(//xs01.meituan.net/waimai_i/img/address/address-edit_dele.d2d09639.png) no-repeat;
+    -webkit-background-size: 65px 16px;
+    -moz-background-size: 65px 16px;
+    background-size: 65px 16px;
+}
+.address-noscope .address-info {
+    background: url(//xs01.meituan.net/waimai_i/img/address/address-noscope.ec052639.png) no-repeat right 5px;
+    -webkit-background-size: 58px 58px;
+    -moz-background-size: 58px 58px;
+    background-size: 58px 58px;
+}
+.contect-button {
+    float: right;
+    display: none;
+}
+.address-add-placeholder {
+    height: 65px;
+}

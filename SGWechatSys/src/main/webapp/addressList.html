@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>选择收货地址</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressList.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="wxi">  
+  <header id="header" class="header page-header">
+    <a class="j-back-link back-wrap" href="javascript:;">
+       <i class="icon i-back"></i>
+    </a>
+    <div class="header-right j-header-right"><span class="addr-manage">管理</span></div>
+    <h1 class="page-name">选择收货地址</h1>
+  </header>
+  
+  <a class="address-add j-address-add" href="javascript:;">
+    <p class="address-add-font">添加收餐地址</p>
+  </a>
+
+  <ul id="address-list" class="address-list">
+        <li class="address-selectable"  data-addr-id="323688505"> 
+            <div class="contect-button">
+              <a class="edit j-edit" href="javascritp:;"></a>
+              <a class="dele j-dele" href="javascript:;"></a>
+            </div>
+            <div class="address-content">
+                <div class="address-info j-address-info">
+                    <p class="customer-info clearfix">
+                        <span class="contect-name">石晓洁</span>
+                        <span class="contect-gender">女士</span>
+                        <span class="contect-phone">13810948412</span>
+                    </p>
+
+                    <p class="address-dtl"><span class="contect-address">启明国际大厦</span> <span
+                            class="contect-number">11层</span></p>
+                </div>
+            </div>
+        </li>
+        <li class="address-noscope" data-addr-id="147406344"> 
+            <div class="contect-button">
+             <a class="edit j-edit" href="javascritp:;"></a>
+             <a class="dele j-dele" href="javascript:;"></a>
+            </div>
+            <div class="address-content">
+                <div class="address-info j-address-info">
+                    <p class="customer-info clearfix">
+                        <span class="contect-name">崔文龙</span>
+                        <span class="contect-gender">先生</span>
+                        <span class="contect-phone">18610015854</span>
+                    </p>
+
+                    <p class="address-dtl"><span class="contect-address">天通北苑3区54号楼</span> <span
+                            class="contect-number">1单元102</span></p>
+                </div>
+            </div>
+        </li>
+   </ul>
+   <div class="address-add-placeholder"></div>
+   
+      
+   <script type="text/javascript" src="./addressList.js"></script>
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script>
+      window.onload=function(){
+    	 renderAddressList();
+      }
+   </script>
+</body>
+</html>

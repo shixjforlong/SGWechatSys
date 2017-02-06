@@ -46,9 +46,12 @@ function renderAddressList(){
 			if(data[i].receiveGender == '0'){
 				gender ="先生";
 			}
-			var liClass = "address-selectable";
+			var liClass = "address-selectable";//address-selectable address-selected 
 			if(data[i].enabled == '1'){
 				liClass="address-noscope";
+			}
+			if(i==0){
+				liClass ="address-selectable address-selected ";
 			}
 			$("#address-list").append(
 					"<li class='"+liClass+"' id='"+data[i].id+"'>"+

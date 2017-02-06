@@ -65,7 +65,7 @@ h3 {
 .customer-gender-choice{float:left;width:50%;height:44px;line-height:44px;padding-left:10px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 .customer-gender-choice .i-circle{float:left;width:16px;height:16px;line-height:16px;border:1px solid #999;margin:12px 8px 0 0;}
 .customer-gender-check .i-circle{width:18px;height:18px;line-height:18px;border:0;background-color:#ffd300;text-align:center;color:#6b450a;font-size:14px;font-family:'iconfonts';}
-.customer-gender-check .i-circle:before{content:'\e61a';}
+.customer-gender-check .i-circle:before{content:'√';}
 .i-circle {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;

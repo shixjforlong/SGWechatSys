@@ -4,7 +4,9 @@ function renderOrderConfirm(){
 	renderDeliveryAddress();//获取用户的配送地址
 }
 function renderDeliveryAddress(){
-	
+    $("#chooseAddress").click(function () {
+    	window.location.href='addressList.html';
+	});
 }
 function renderSubmitOrder(){
 	$("#submitOrder").click(function () {

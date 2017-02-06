@@ -16,7 +16,7 @@
       <a class="j-back-link back-wrap" href="javascript:;">
         <i class="icon i-back"></i>
       </a>
-      <a class="addr-save j-addr-save" href="javascript:void(0);">保存</a>
+      <a class="addr-save j-addr-save" id="saveAddress" href="javascript:void(0);">保存</a>
       <h1 class="page-name">新增收货地址</h1>
    </header>
    <div class="main-wrap">
@@ -26,7 +26,7 @@
             <li>
                 <span class="fill-type">姓名：</span>
                 <div class="fill-section-right">
-                    <input type="text" class="fill-input j-name" placeholder="请填写收货人姓名" />
+                    <input type="text" class="fill-input j-name" id="name" placeholder="请填写收货人姓名" />
                     <div class="customer-gender">
                         <span class="customer-gender-choice" data-gender="0"><i class="i-circle"></i>先生</span>
                         <span class="customer-gender-choice" data-gender="1"><i class="i-circle"></i>女士</span>
@@ -36,7 +36,7 @@
             <li>
                 <span class="fill-type">电话：</span>
                 <div class="fill-section-right fill-phone-right">
-                    <input type="text" class="fill-input j-phone" maxlength="11" placeholder="请填写收餐手机号码" />
+                    <input type="text" class="fill-input j-phone" id="phone" maxlength="11" placeholder="请填写收餐手机号码" />
                     <ul class="addr-tip-list j-phone-list"></ul>
                 </div>
             </li>
@@ -48,7 +48,7 @@
             <li>
                 <span class="fill-type">详细地址：</span>
                 <div style="display: block; height: 44px;margin-left: 65px;">
-                    <input type="text" style="width:96%;height:42px;line-height:42px;border:0;font-size:14px;"  placeholder="北京市昌平区回龙观紫晶七星广场A130室" />
+                    <input type="text" id="address" style="width:96%;height:42px;line-height:42px;border:0;font-size:14px;"  placeholder="北京市昌平区回龙观紫晶七星广场A130室" />
                 </div>
             </li>
         </ul>

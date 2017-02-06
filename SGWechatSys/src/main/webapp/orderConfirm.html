@@ -47,25 +47,16 @@
             <div style="margin-right: 10px;text-align: right;color: #bbc4cc;"><span>由 商家 提供配送服务</span></div>
         </div>
         <div style="border-bottom: 1px solid #f1e9e9;">
-           <table style="width: 100%;margin-left: 13px;">
-             <tr style="height: 30px;">
-               <td width="70%">红烧茄子饭</td><td width="18%" style="color: #bbc4cc;">x1</td><td width="12%">￥13</td>
-             </tr>
-             <tr style="height: 30px;">
-               <td width="70%">西红柿鸡蛋饭</td><td width="18%" style="color: #bbc4cc;">x1</td><td width="12%">￥15</td>
-             </tr>
-             <tr style="height: 30px;">
-               <td width="70%">小炒肉饭</td><td width="18%" style="color: #bbc4cc;">x1</td><td width="12%">￥15</td>
-             </tr>
+           <table id="goodOrderInfo" style="width: 100%;margin-left: 13px;">
            </table>
         </div>
         <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
             <div style="width: 75px;float: left;"><span style="margin-left: 15px;">配送费</span></div>
-            <div style="margin-right: 10px;text-align: right;"><span>￥5</span></div>
+            <div style="margin-right: 10px;text-align: right;">￥<span id="distributionCost">5</span></div>
         </div>
         <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
-            <div style="width: 75px;float: left;color: #bbc4cc;"><span style="margin-left: 15px;">总计</span><span>￥28</span></div>
-            <div style="margin-right: 10px;text-align: right;"><span>实付</span><span style="color: red;">￥28</span></div>
+            <div style="width: 75px;float: left;color: #bbc4cc;"><span style="margin-left: 15px;">总计</span><span id="total"></span></div>
+            <div style="margin-right: 10px;text-align: right;"><span>实付</span><span style="color: red;" id="paid"></span></div>
         </div>
       </div>
      
@@ -73,13 +64,21 @@
     <!-- 支付 -->
       <div id="pay" class="cart">
         <div class="cart-tip">
-            <div class="j-cart-empty cart-empty" style="text-align: center;">待支付<span style="color: red;font-size: 16px;">￥28</span></div>
+            <div class="j-cart-empty cart-empty" style="text-align: center;">待支付<span style="color: red;font-size: 16px;" id="finalPay"></span></div>
          </div>
          <div class="cart-btns">
              <a class="cart-btn-unavail">
-               <span class="inner" style="background-color: #ffd300;color: #6b450a;">提交订单</span>
+               <span class="inner" id="submitOrder" style="background-color: #ffd300;color: #6b450a;">提交订单</span>
              </a>
          </div>
       </div>
+      
+      <script type="text/javascript" src="./orderConfirm.js"></script>
+      <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+      <script>
+       window.onload=function(){
+    	   renderOrderConfirm();
+       }
+    </script>
 </body>
 </html>

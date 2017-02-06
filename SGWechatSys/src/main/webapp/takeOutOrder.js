@@ -71,11 +71,11 @@ function getGoodsInfoByTypeId(typeId,typeName){
             	                      "</div>"+    
             	                      "<div class='j-item-console foodop clearfix'>"+ 
             	                        "<a class='j-add-item add-food' href='javascript:;'>"+
-            	                           "<i class='icon i-add-food' id='"+i+"'></i>"+
+            	                           "<i class='icon i-add-food' id='"+i+"' goodsId='"+data.result[i].id+"' goodsName='"+data.result[i].name+"' goodsPrice='"+data.result[i].price/100+"'></i>"+
             	                        "</a>"+
             	                        "<span class='j-item-num foodop-num' id='add_"+i+"' style='display:none'>0</span>"+
             	                         "<a class='j-remove-item remove-food' id='remove-food_"+i+"' style='display:none' href='javascript:;'>"+
-            	                            "<i class='icon i-remove-food' id='remove_"+i+"'></i>"+
+            	                            "<i class='icon i-remove-food' id='remove_"+i+"' goodsId='"+data.result[i].id+"'></i>"+
             	                         "</a>"+ 
             	                      "</div>"+    
             	                  "</div>"+ 
@@ -83,10 +83,14 @@ function getGoodsInfoByTypeId(typeId,typeName){
             	            "</div>"
             		);
             	}
+            	
+            	var m = [];
             	$(".i-add-food").click(function () {
         			$("#add_"+$(this)[0].id).css("display","block");
         			$("#add_"+$(this)[0].id).text(parseInt($("#add_"+$(this)[0].id).text())+1);
         			$("#remove-food_"+$(this)[0].id).css("display","block");
+        			
+        			console.log($(this));
         			
         			var price =  $("#total").text();
         			if(price){
@@ -130,10 +134,39 @@ function getGoodsInfoByTypeId(typeId,typeName){
         						"</a>"
         				);
         			}
+        			
+        			var goodsId = $(this)[0].attributes[2].value;
+        			var goodsName = $(this)[0].attributes[3].value;
+        			var goodsPrice = $(this)[0].attributes[4].value;
+        			if(m.indexOf(goodsId) > -1){
+        				var count = $("#td_"+goodsId).text();
+        				$("#td_"+goodsId).html(parseInt(count)+1);
+        			}else{
+        			    m.push(goodsId);
+        			    $("#carList").append(
+   	        			   "<tr id='tr_"+goodsId+"'>"+
+   	        			     "<td>"+goodsName+"</td>"+
+   	        			     "<td id='td_"+goodsId+"'>1</td>"+
+   	        			     "<td>"+goodsPrice+"</td>"+
+   	        			   +"</tr>"		
+   	        	       );
+        			}
+        			
         			//结算
         			$(".cart-btn-confirm").click(function () {
-        				console.log("111111");
-        				window.location.href='orderConfirm.html';
+        				var tableObj =document.getElementById("carList");
+        				var goodsStr = "";
+        				for(var i=0;i<tableObj.rows.length;i++){
+        					for(var j=0;j<tableObj.rows[i].cells.length;j++){
+	                			var cell = tableObj.rows[i].cells[j].innerText;
+							    if(j == 2){
+							    	goodsStr += cell+";";
+								}else{
+									goodsStr += cell+",";
+								}
+					    	}
+        				}
+        				window.location.href='orderConfirm.html?goodsStr='+goodsStr;
         			});
         		});
             	$(".i-remove-food").click(function () {
@@ -143,6 +176,17 @@ function getGoodsInfoByTypeId(typeId,typeName){
         				$("#add_"+id).css("display","none");
         				$("#remove-food_"+id).css("display","none");
         			}
+        			
+        			var goodsId = $(this)[0].attributes[2].value;
+        			var count = $("#td_"+goodsId).text();
+        			if(count>1){
+        				$("#td_"+goodsId).html(parseInt(count)-1);
+        			}else if(count == 1){
+        				m.removeByValue(goodsId);
+        				$("#tr_"+goodsId).remove();
+        				
+        			}
+    				
         			
         			//购物车
         			var flag = $("#flag").text();
@@ -190,4 +234,12 @@ function getGoodsInfoByTypeId(typeId,typeName){
             }
         }
     });
+}
+Array.prototype.removeByValue = function(val) {
+	  for(var i=0; i<this.length; i++) {
+	    if(this[i] == val) {
+	      this.splice(i, 1);
+	      break;
+	    }
+	  }
 }

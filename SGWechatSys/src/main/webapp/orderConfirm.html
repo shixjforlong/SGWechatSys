@@ -16,20 +16,45 @@
    <header id="header" class="header page-header">
     <a class="j-back-link back-wrap" href="javascript:;">
        <i class="icon i-back"></i>
+       <input type="hidden" id="openId" />
+       <input type="hidden" id="goodsStr" />
     </a>
     <h1 class="page-name">订单确认</h1>
   </header>
    <div style="font-size:12px;height: 580px;">
      <!-- 收货地址 -->
-      <div style="background-color: white;height: 80px;margin-top: 12px;">
-        <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;" id="chooseAddress">
-            <div style="width: 25px;float: left;line-height: 50px;margin-left: 10px;"><img src="./images/add.png" style="width:20px;"></div>
-            <div style="margin-left: 30px;"><span>选择收货地址</span></div>
+      <div style="background-color: white;height: 50px;margin-top: 12px;">
+        <div style="line-height: 20px;">
+            <div id="chooseAddress" style="display:none;">
+               <div style="float: left;margin-left: 15px;width: 90%;height: 50px;line-height: 50px;"><span>+选择收货地址</span></div>
+               <div style="height: 50px;line-height: 50px;font-size: 14px;">
+                <span> ></span>
+              </div>
+            </div>
+            <div id="userAddress" style="display:none;">
+              <div style="float: left;margin-left: 15px;width: 90%;">
+                <table>
+                  <tr><td><span id="name"></span>&nbsp;<span id="gender"></span>&nbsp;<span id="phone"></span></td></tr>
+                  <tr>
+                    <td>
+                      <span id="address"></span>
+                      <input type="hidden" id="addressId" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div style="height: 50px;line-height: 50px;font-size: 14px;">
+                <span> ></span>
+              </div>
+            </div>
         </div>
-        <div style="height: 40px;line-height: 40px;">
-            <div style="width: 55px;float: left;"><span style="margin-left: -20px;">送达时间</span></div>
+      </div>
+       <!-- 送达时间-->
+       <div style="background-color: white;height: 40px;margin-top: 12px;">
+          <div style="border-bottom: 1px solid #f1e9e9;height: 40px;line-height: 40px;">
+            <div style="width: 100px;float: left;"><span style="margin-left: 15px;">送达时间</span></div>
             <div style="margin-right: 10px;text-align: right;color: #4aa1e6;"><span>立即送出(大约15：29送达)</span></div>
-        </div>
+          </div>
       </div>
       <!-- 支付方式 积分 -->
       <div style="background-color: white;height: 80px;margin-top: 12px;">

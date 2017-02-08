@@ -4,8 +4,64 @@ function renderOrderConfirm(){
 	renderDeliveryAddress();//获取用户的配送地址
 }
 function renderDeliveryAddress(){
+	var openId = $("#openId").val();
+	//根据openId获取收货地址
+	var url="/wapi/wuAddress/list?limit=1000&cursor=0&openId="+openId;
+	$.ajax({
+        url: url,
+        type: "GET",
+        success: function(data) {
+        	console.log(data);
+        	if(data.result && data.result.length>0){
+        		$("#chooseAddress").css("display","none");
+        		$("#userAddress").css("display","block");
+              	 for(var i=0;i<data.result.length;i++){
+              		var addressId = $("#addressId").val();
+              		if(addressId){
+              			if(data.result[i].id == addressId){
+              				 $("#name").text(data.result[i].receiveName);
+                  			 $("#phone").text(data.result[i].receivePhone);
+                  			 $("#address").text(data.result[i].receiveAddress);
+                  			 if(data.result[i].receiveGender == '0'){
+                  				 $("#gender").text("先生");
+                  			 }else{
+                  				$("#gender").text("女士");
+                  			 }
+                  			 $("#addressId").val(data.result[i].id);
+              			}
+              			
+              		}else{
+              			 if(data.result[i].enabled == '0'){
+                  			 $("#name").text(data.result[i].receiveName);
+                  			 $("#phone").text(data.result[i].receivePhone);
+                  			 $("#address").text(data.result[i].receiveAddress);
+                  			 if(data.result[i].receiveGender == '0'){
+                  				 $("#gender").text("先生");
+                  			 }else{
+                  				$("#gender").text("女士");
+                  			 }
+                  			 $("#addressId").val(data.result[i].id);
+                  			 break;
+                  		 }
+              		}
+              	 }
+        	}else{
+        		$("#chooseAddress").css("display","block");
+        		$("#userAddress").css("display","none");
+        	}
+        }
+	});
+	
     $("#chooseAddress").click(function () {
-    	window.location.href='addressList.html';
+    	var goodsStr=$("#goodsStr").val();
+    	var openId = $("#openId").val();
+    	window.location.href='addressList.html?openId='+openId+"&goodsStr="+goodsStr;
+	});
+    $("#userAddress").click(function () {
+    	var addressId = $("#addressId").val();
+    	var goodsStr= $("#goodsStr").val();
+    	var openId = $("#openId").val();
+    	window.location.href='addressList.html?openId='+openId+"&addressId="+addressId+"&goodsStr="+goodsStr;
 	});
 }
 function renderSubmitOrder(){
@@ -16,7 +72,14 @@ function renderSubmitOrder(){
 function renderOrderList(){
 	var paramObj = GetRequest();
 	var goodsStr = paramObj.goodsStr;
+	var openId = paramObj.openId;
+	$("#openId").val(openId);
+	$("#goodsStr").val(goodsStr);
+	if(paramObj.addressId){
+		$("#addressId").val(paramObj.addressId);
+	}
 	console.log(goodsStr);
+	
 	var array = goodsStr.split(";");
 	if(array.length>0){
 		var all=0;

@@ -2,38 +2,76 @@ function renderAddAddress(){
 	renderSave();
 	renderBack();
 	renderSelectGender();//选择性别
-	//renderGetData();
-}
-function renderGetData(){
-	var paramObj = GetRequest();
-	if(paramObj && paramObj.id){
-		var id = paramObj.id;
-		console.log("id==="+id);
-		if(id){
-			//根据id获取收货地址的详细信息
-			
-		}
-	}
 }
 function renderSave(){
+	var paramObj = GetRequest();
+	var openId = paramObj.openId;
+	$("#openId").val(openId);
+	if(paramObj && paramObj.addressId){
+		var addressId = paramObj.addressId;
+		if(addressId){
+			//根据id获取收货地址的详细信息
+			$.ajax({
+                url: "/wapi/wuAddress/"+addressId,
+                type: "GET",
+                success: function(data) {
+                	$("#name").val(data.result.receiveName);
+                	$("#phone").val(data.result.receivePhone);
+                	$("#address").val(data.result.receiveAddress);
+                	$('.customer-gender-choice').each(function(){
+                		if($(this)[0].attributes[1].value == data.result.receiveGender){
+                			$(this).addClass("customer-gender-check");
+                		}
+                	});
+                }
+            });
+		}
+	}
+	
 	$("#saveAddress").click(function () {
 		//获取页面信息
+		var openId = $("#openId").val();
 		var name = $("#name").val();//收货人姓名
 		var gender = $(".customer-gender-check")[0].attributes[1].value;//收货人性别
 		var phone = $("#phone").val();//收货人手机号
 		var address = $("#address").val();//收货人地址
 		var data={
-			openId:'',
+			openId:openId,
 			receiveName:name,
 			receiveGender:gender,
 			receivePhone:phone,
-			receiveAddress:address
+			receiveAddress:address,
+			enabled:'0'
 		};
 		console.log(data);
-		//存入数据库
-		
-		//跳转
-		window.location.href='addressList.html';
+		var paramObj = GetRequest();
+		if(paramObj && paramObj.addressId){
+			//修改
+			$.ajax({
+				url:"/wapi/wuAddress/"+paramObj.addressId,
+				type : "PUT",
+				"contentType": "application/json", 
+				data:JSON.stringify(data),
+				success: function(data) {
+					console.log(data);
+					//跳转
+					window.location.href='addressList.html?openId='+openId;
+	            }
+			});
+		}else{
+			//新增
+			$.ajax({
+				url:"/wapi/wuAddress/add",
+				type : "post",
+				"contentType": "application/json", 
+				data:JSON.stringify(data),
+				success: function(data) {
+					console.log(data);
+					//跳转
+					window.location.href='addressList.html?openId='+openId;
+	            }
+			});
+		}
 		
 	});
 }

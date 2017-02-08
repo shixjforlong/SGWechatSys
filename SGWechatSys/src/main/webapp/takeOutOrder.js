@@ -2,13 +2,16 @@ function renderTakeOutOrder(){
 	getAllGoodsType();//获取所有商品分类
 }
 function getAllGoodsType(){
+	var paramObj = GetRequest();
+	var openId = paramObj.openId;
+	$("#openId_").val(openId);
+	
 	var url="/sapi/goodsType/list?limit=1000&cursor=0";
     $.ajax({
         url: url,
         type: "GET",
         success: function(data) {
             console.log(data);
-            goodsType = data;
             if(data.result && data.result.length>0){
            	 for(var i=0;i<data.result.length;i++){
            		 $("#goodsTypeList").append(
@@ -21,7 +24,6 @@ function getAllGoodsType(){
            		 $("#"+data.result[i].id).click(function () {
            			 $("div").removeClass("focus");
            			 $(this).addClass("focus");
-           			 console.log($(this));
            			 var typeId = $(this)[0].id;
            			 var typeName = $(this)[0].innerText;
            			 getGoodsInfoByTypeId(typeId,typeName);//根据商品分类ID获取对应的商品信息
@@ -166,7 +168,9 @@ function getGoodsInfoByTypeId(typeId,typeName){
 								}
 					    	}
         				}
-        				window.location.href='orderConfirm.html?goodsStr='+goodsStr;
+        				var openId_ = $("#openId_").val();
+        				
+        				window.location.href="orderConfirm.html?openId="+openId_+"&goodsStr="+goodsStr;
         			});
         		});
             	$(".i-remove-food").click(function () {
@@ -242,4 +246,16 @@ Array.prototype.removeByValue = function(val) {
 	      break;
 	    }
 	  }
+}
+function GetRequest() {
+	var url = location.search; //获取url中"?"符后的字串
+	var theRequest = new Object();
+	if (url.indexOf("?") != -1) {
+	      var str = url.substr(1);
+	      strs = str.split("&");
+	      for(var i = 0; i < strs.length; i ++) {
+	         theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+	      }
+	 }
+	 return theRequest;
 }

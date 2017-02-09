@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>食国外卖</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/cart.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressAdd.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="wxi"> 
+   <header id="header" class="header page-header  ">
+      <a class="j-back-link back-wrap" href="javascript:;">
+        <i class="icon i-back"></i>
+      </a>
+      <h1 class="page-name">支付订单</h1>
+      <input type="hidden" id="openId" />
+   </header>
+   <div class="main-wrap">
+     <div style="background-color: white;height: 50px;margin-top: 12px;border-bottom: 1px solid #f1e9e9;">
+        <div style="border-bottom: 1px solid #f1e9e9;line-height: 50px;">
+            <div style="width: 100px;float: left;"><span style="margin-left: 15px;">订单金额</span></div>
+            <div style="margin-right: 10px;text-align: right;color: #bbc4cc;"><span id="orderPrice"></span></div>
+        </div>
+      </div>
+      
+      <div style="background-color: white;height: 50px;">
+        <div style="border-bottom: 1px solid #f1e9e9;line-height: 50px;">
+            <div style="width: 100px;float: left;"><span style="margin-left: 15px;">支付方式</span></div>
+            <div style="margin-right: 10px;text-align: right;color: #bbc4cc;"><span>微信支付</span></div>
+        </div>
+      </div>
+      
+      <div id="payOrder" class="cart">
+         <a class="cart-btn-unavail">
+             <span class="inner" id="submitOrder" style="background-color: #ffd300;width:100%;">
+              <span style="font-size: 20px;color:white;">确认支付
+                 <span style="font-size: 20px;color: #6b450a;" id="price"></span>
+              </span>
+             </span>
+         </a>
+      </div>
+   </div>
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script type="text/javascript" src="./orderPay.js"></script>
+   <script>
+      window.onload=function(){
+    	  renderOrderPay();
+      }
+   </script>
+</body>
+</html>

@@ -33,6 +33,7 @@ function renderBtnClick(){
    		   $("#total").text("￥"+finalPrice);
 		   $("#paid").text("￥"+finalPrice);
 		   $("#finalPay").text("￥"+finalPrice);
+		   $("#totalPrice").text(finalPrice);
 		
     	   div1.className=(div1.className=="close1")?"open1":"close1";
            div2.className=(div2.className=="close2")?"open2":"close2";
@@ -42,11 +43,58 @@ function renderBtnClick(){
 function renderSubmitOrder(){
 	$("#submitOrder").click(function () {
 		var addressId = $("#addressId").val();//收货地址
-		var times = $("#service_time").text();//送达时间
+		var receiveName = $("#name").text();
+		var receiveGender = $("#gender").text();
+	    var receivePhone = $("#phone").text();
+		var receiveAddress = $("#address").text();
+		
+		var serviceTime = $("#service_time").text();//送达时间
 		var goodsInfo = $("#goodsStr").val();//商品信息
+		var gtotalPrice = $("#goodsPrice").val();//商品总金额
+		var distributionCost = $("#distributionCost").text();//配送费
+		var integral = parseInt($("#JPrice").val())*10;//积分扣除
+		var payPrice = $("#totalPrice").text();//支付金额 = 商品总金额 + 配送费 - 此次消费积分
+		var empirical = parseInt(payPrice)*10;//此次消费获得的经验值
+		var getIntegral= parseInt(payPrice);//此次消费获得的积分值
+		
 		if(addressId =="" || addressId == null){
 			alert("请选择收货地址");
 		}
+		var openId = $("#openId").val();
+		var now = new Date().getTime();
+		var orderNo = openId+"-"+now;
+		var finalData={
+				openId:openId,
+				orderNo:orderNo,
+				receiveName:receiveName,
+				receiveGender:receiveGender,
+				receivePhone:receivePhone,
+				receiveAddress:receiveAddress,
+				serviceTime:serviceTime,//客户要求送餐时间
+				goodsInfo:goodsInfo,//商品信息
+				gtotalPrice:gtotalPrice,//商品总金额
+				distributionCost:distributionCost,//配送费
+				integral:integral,//积分扣除
+				payPrice:payPrice,//最终支付价格
+				empirical:empirical,//此次消费获得的经验值
+				getIntegral:getIntegral,//此次消费获得的积分值
+				payState:1,   //支付状态   1待支付 2支付失败 3支付成功
+				state:-1 //订单状态  -1:订单暂未支付  0:等待商户接单  1:商户已接单  2:商品派送中  3:订单完成
+				
+		};
+		console.log(finalData);
+		var orderInfo = JSON.stringify(finalData);
+		$.ajax({
+			url:"/wapi/order/add",
+			type : "post",
+			"contentType": "application/json", 
+			data:JSON.stringify(finalData),
+			success: function(data) {
+				console.log(data);
+				//跳转
+				window.location.href='orderPay.html?orderInfo='+orderInfo;
+            }
+		});
 		
 	});
 }
@@ -64,7 +112,6 @@ function renderGetUserJF(){
         		var jprice =parseInt(data.result[0].integration/10);
         		$("#jf").text("积分为"+data.result[0].integration+",可优惠"+jprice+"元");
         		$("#JPrice").val(jprice);
-        		
         	}else{
         		$("#jf").text("暂无可用积分");
         		$("#JPrice").val(null);
@@ -181,6 +228,7 @@ function renderOrderList(){
 		$("#total").text("￥"+finalPrice);
 		$("#paid").text("￥"+finalPrice);
 		$("#finalPay").text("￥"+finalPrice);
+		$("#totalPrice").text(finalPrice);
 	}
 }
 function GetRequest() {

@@ -8,7 +8,40 @@ function renderOrderPay(){
 	
 	//点击支付
 	$("#payOrder").click(function () {
-		
+		$.ajax({
+			url:"/wapi/wechat/prePayId?openId="+orderObj.openId+"&orderNo="+orderObj.orderNo+"&price="+orderObj.payPrice,
+			type : "GET",
+			"contentType": "application/json", 
+			success: function(data) {
+				var appId = data.appId;
+				var nonce_str = data.nonce_str;
+				var prePayId = data.prePayId;
+				var time = new Date().getTime()/1000;
+				time = (time+"").substring(0,(time+"").length-4);
+				
+				$.ajax({
+					url:"/wapi/wechat/wechatSign?appId="+appId+"&timeStamp="+time+"&nonceStr="+nonce_str+"&packageName=prepay_id="+prePayId,
+					type : "GET",
+					"contentType": "application/json", 
+					success: function(data) {
+						var sign = data.paySign;
+						WeixinJSBridge.invoke('getBrandWCPayRequest',{
+							"appId" : appId,
+							"timeStamp":time,
+							"nonceStr" : nonce_str,
+							"package" : "prepay_id="+prePayId,
+							"signType" : "MD5",
+							"paySign" : sign
+						},
+						function(res){
+							 if(res.err_msg.trim() == "get_brand_wcpay_request:ok"){
+								window.location.href = "http://www.baidu.com";		
+							 }
+						});
+					}
+				});
+            }
+		});
 	});
 }
 

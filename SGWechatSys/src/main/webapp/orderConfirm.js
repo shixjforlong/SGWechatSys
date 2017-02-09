@@ -62,7 +62,7 @@ function renderSubmitOrder(){
 		}
 		var openId = $("#openId").val();
 		var now = new Date().getTime();
-		var orderNo = openId+"-"+now;
+		var orderNo = now;
 		var finalData={
 				openId:openId,
 				orderNo:orderNo,

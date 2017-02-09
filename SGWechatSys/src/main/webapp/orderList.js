@@ -1,56 +1,82 @@
-
-
-function renderOrderList(){
-	var orderList=[];
-	var orderObj1={
-			goodsImage:"//xs01.meituan.net/waimai_i/img/shoploading.42591fec.png",//商品图片
-			status:"待评价",//状态  0:待支付 1：待评价  2：已完成
-			price:"12",
-			createTime:"2017-01-12 11:18"//订单时间
-	};
-	var orderObj2={
-			goodsImage:"//xs01.meituan.net/waimai_i/img/shoploading.42591fec.png",//商品图片
-			status:"待评价",//状态  0:待支付 1：待评价  2：已完成
-			price:"12",
-			createTime:"2017-01-12 11:18"//订单时间
-	};
-	var orderObj3={
-			goodsImage:"//xs01.meituan.net/waimai_i/img/shoploading.42591fec.png",//商品图片
-			status:"待评价",//状态  0:待支付 1：待评价  2：已完成
-			price:"12",
-			createTime:"2017-01-12 11:18"//订单时间
-	};
-	orderList.push(orderObj1);
-	orderList.push(orderObj2);
-	orderList.push(orderObj3);
-	console.log(orderList);
-	if(orderList.length>0){
-		for(var i=0;i<orderList.length;i++){
-			$("#order-list").append("<div class='field'>" +
-					 "<div class='field-head'>"+
-                        "<a href='/restaurant/72894237627578801' class='field-head-name'>食国</a>"+
-                          "<span class='field-head-status field-head-status-light'>"+orderList[i].status+"</span>"+
-                      "</div>"+
-                      "<a class='field-item clearfix' href='/order/statusdetail/1724231384054608'>"+
-                         "<div class='avatar'>"+
-                            "<img src='"+orderList[i].goodsImage+"' data-src-retina='http://p0.meituan.net/xianfu/52193272b636cd71816f253a29799e81115051.jpg' class='j-avatar-img avatar-img'/>"+
-                         "</div>"+
-                         "<div class='content'>"+
-                            "<p class='price'>￥"+orderList[i].price+"</p>"+
-                            "<p class='order-time'>"+orderList[i].createTime+"</p>"+
-                            "<p class='delivery_tip'>由食国提供配送服务</p>"+
-                         "</div>"+
-                         "<i class='field-arrow icon-arrow-right'></i>"+
-                       "</a>"+
-                       "<div class='field-console'>"+
-                          "<div class='field-console-btns'>"+
-                             "<a class='combtn field-btn'   href=''>评价</a>"+
-                             "<button class='j-field-buy-again combtn field-btn-gray' data-poi-id='172423' data-poi-valid='1' data-view-id='1724231384054608'>再来一单</button>"+
-                          "</div>"+
-                       "</div>"+
-					"</div>");
-		}
-	}
+function renderAllOrder(){
+	var paramObj = GetRequest();
+	var openId = paramObj.openId;
 	
+	renderOrderList(openId);
+}
+function renderOrderList(openId){
 	
+	var url="/wapi/order/list?limit=1000000&cursor=0&openId="+openId;
+	$.ajax({
+        url: url,
+        type: "GET",
+        success: function(data) {
+        	console.log(data);
+        	if(data.result.length>0){
+        		$("#j-load").css("display","none");
+        		for(var i=0;i<data.result.length>0;i++){
+        			 var status="";
+        			 var display="none";
+        			 if(data.result[i].state =="-1"){
+        				 status="未支付";
+        				 display="block";
+        			 }else if(data.result[i].state =="0"){
+        				 status="等待商户接单";
+        			 }else if(data.result[i].state =="1"){
+        				 status="商户已接单";
+        			 }else if(data.result[i].state =="2"){
+        				 status="商品派送中";
+        			 }else if(data.result[i].state =="3"){
+        				 status="订单完成";
+        			 }
+        			 var time = new Date(data.result[i].createTime*1000);
+        			 var y = time.getFullYear();
+        			 var m = time.getMonth()+1;
+        			 var d = time.getDate();
+        			 var h = time.getHours();
+        			 var mm = time.getMinutes();
+        			 var s = time.getSeconds();
+        			 var createTime = y+"-"+m+"-"+d+" "+h+":"+mm+":"+s;
+        			 
+        			 $("#order-list").append("<div class='field'>" +
+        						 "<div class='field-head'>"+
+        	                        "<a href='/restaurant/72894237627578801' class='field-head-name'>食国外卖</a>"+
+        	                          "<span class='field-head-status field-head-status-light'>"+status+"</span>"+
+        	                      "</div>"+
+        	                      "<a class='field-item clearfix' href='/order/statusdetail/1724231384054608'>"+
+        	                         "<div class='avatar'>"+
+        	                            "<img src='http://101.201.150.141/file/logo.jpeg' class='j-avatar-img avatar-img'/>"+
+        	                         "</div>"+
+        	                         "<div class='content'>"+
+        	                            "<p class='price'>￥"+data.result[i].payPrice+"</p>"+
+        	                            "<p class='order-time'>"+createTime+"</p>"+
+        	                            "<p class='delivery_tip'>由食国提供配送服务</p>"+
+        	                         "</div>"+
+        	                         "<i class='field-arrow icon-arrow-right'></i>"+
+        	                       "</a>"+
+        	                       "<div class='field-console'>"+
+        	                          "<div class='field-console-btns'>"+
+        	                           // "<a class='combtn field-btn'   href='' >评价</a>"+
+        	                             "<button class='j-field-buy-again combtn field-btn-gray' data-poi-id='172423' data-poi-valid='1' data-view-id='1724231384054608' id='pay' style='display:"+display+";'>立即支付</button>"+
+        	                          "</div>"+
+        	                       "</div>"+
+        						"</div>");
+        			}
+        	}else{
+        		$("#j-load").css("display","block");
+        	}
+        }
+	});
+}
+function GetRequest() {
+	var url = location.search; //获取url中"?"符后的字串
+	var theRequest = new Object();
+	if (url.indexOf("?") != -1) {
+	      var str = url.substr(1);
+	      strs = str.split("&");
+	      for(var i = 0; i < strs.length; i ++) {
+	         theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+	      }
+	 }
+	 return theRequest;
 }

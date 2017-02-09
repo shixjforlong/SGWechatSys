@@ -35,6 +35,22 @@ function renderSave(){
 		var gender = $(".customer-gender-check")[0].attributes[1].value;//收货人性别
 		var phone = $("#phone").val();//收货人手机号
 		var address = $("#address").val();//收货人地址
+		if(name =="" || name == null){
+			alert("请填写姓名");
+			return;
+		}
+		if(gender =="" || gender == null){
+			alert("请选择性别");
+			return;
+		}
+		if(phone =="" || phone == null){
+			alert("请填写手机号");
+			return;
+		}
+		if(address =="" || address == null){
+			alert("请填写收货地址");
+			return;
+		}
 		var data={
 			openId:openId,
 			receiveName:name,

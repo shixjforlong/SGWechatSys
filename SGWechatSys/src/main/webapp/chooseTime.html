@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressAdd.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="wxi"> 
+   <header id="header" class="header page-header  ">
+      <a class="j-back-link back-wrap" href="javascript:;">
+        <i class="icon i-back"></i>
+      </a>
+      <h1 class="page-name">选择送达时间</h1>
+      <input type="hidden" id="openId" />
+      <input type="hidden" id="goodsStr" />
+      <input type="hidden" id="times" />
+   </header>
+   <div class="main-wrap">
+    <div id="timeList" style="font-size: 12px;">
+       <div id="once" style="background-color: white;border-bottom: 1px solid #f1e9e9;">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>立即送出</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      
+      <div id="9" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>9：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="10" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height: 30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>10：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="11" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>11：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="12" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>12：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="13" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>13：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+       <div id="14" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>14：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="15" style="background-color: white;border-bottom: 1px solid #f1e9e9;">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;" class="ctime">
+                <table>
+                  <tr><td><span>15：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="16" style="background-color: white;border-bottom: 1px solid #f1e9e9;">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;" class="ctime">
+                <table>
+                  <tr><td><span>16：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+       <div id="17" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>17：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+       <div id="18" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>18：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="19" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>19：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="20" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>20：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      <div id="21" style="background-color: white;border-bottom: 1px solid #f1e9e9;" class="ctime">
+            <div style="float: left;margin-left: 15px;width: 90%;height:30px;line-height: 30px;">
+                <table>
+                  <tr><td><span>21：00</span></td></tr>
+                </table>
+            </div>
+            <div style="height: 30px;line-height: 30px;font-size: 14px;">
+                <span> ></span>
+            </div>
+      </div>
+      
+      
+    </div>
+   </div>
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script type="text/javascript" src="./chooseTime.js"></script>
+   <script>
+      window.onload=function(){
+    	  renderTimeList();
+      }
+   </script>
+</body>
+</html>

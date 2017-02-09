@@ -1,5 +1,23 @@
 function renderTakeOutOrder(){
 	getAllGoodsType();//获取所有商品分类
+	//renderBtn();
+}
+function renderBtn(){
+	$("#business").click(function () {
+		$("#menu").removeClass("selected");
+		$("#business").addClass("selected");
+		
+		$("#menuwrap").css("display","none");
+		$("#aboutMe").css("display","block");
+		
+	});
+    $("#menu").click(function () {
+    	$("#business").removeClass("selected");
+    	$("#menu").addClass("selected");
+    	
+    	$("#menuwrap").css("display","block");
+		$("#aboutMe").css("display","none");
+	});
 }
 function getAllGoodsType(){
 	var paramObj = GetRequest();
@@ -28,6 +46,7 @@ function getAllGoodsType(){
            			 var typeName = $(this)[0].innerText;
            			 getGoodsInfoByTypeId(typeId,typeName);//根据商品分类ID获取对应的商品信息
            		 });
+           		$("#"+data.result[0].id).click();
            	 }
             }
         }
@@ -46,7 +65,7 @@ function getGoodsInfoByTypeId(typeId,typeName){
             console.log(data);
             $("#mainwrap").html("");
             $("#mainwrap").append(
-     		       "<div class='foodlistwrap' style='transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);'>"+
+     		       "<div class='foodlistwrap' style='margin-top:-12px;transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);'>"+
      	            "<div id='foodlist100' data-tagid='100' class='j-foodlist foodlist'>"+ 
      	              "<h3 class='foodlist-label'>"+typeName+"</h3>"+
      	              "<div class='goods'></div>"+

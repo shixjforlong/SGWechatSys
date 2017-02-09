@@ -86,6 +86,7 @@ i {
 .menu-tabs {
     height: 45px;
     border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
 }
 .menu-tabs a {
     float: left;
@@ -138,7 +139,7 @@ i {
 }
 .tag-inner {
     position: relative;
-    margin: 0 6px;
+    /*margin: 0 6px;*/
     height: 60px;
     border-bottom: 1px dotted #bfbfbf;
 }

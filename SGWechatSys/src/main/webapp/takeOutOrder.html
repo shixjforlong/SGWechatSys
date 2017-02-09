@@ -34,19 +34,19 @@
    </div>
    
    <div class="j-menu-tabs menu-tabs"> 
-       <a class="selected" data-inited="true" href="javascript:void(0);">
-          <span>点菜</span>
+       <a id="menu" class="selected" data-inited="true" href="javascript:void(0);">
+          <span style="width: 100%;">点餐</span>
        </a>
        <a  style="display:none;" data-inited="false" data-from="/wxi/poi/comment?wmpoiid=72894237627709873&amp;apage=2" href="javascript:void(0);">
           <span>评价</span>
        </a>
-       <a style="display:none;" data-inited="false" data-from="/wxi/restaurantDetail/72894237627709873?apage=1" href="javascript:void(0);">
-          <span>商家</span>
+       <a  id="business" style="display:none;" data-inited="false" data-from="/wxi/restaurantDetail/72894237627709873?apage=1" href="javascript:void(0);">
+          <span>关于我们</span>
        </a> 
    </div>
    
    <div id="menuwrap" class="menuwrap">
-        <div id="asidewrap" class="asidewrap" style="height: 580px;">
+        <div id="asidewrap" class="asidewrap" style="height: 580px;border: 1px solid #f0f0f0;">
         <!-- 商品分类 -->
          <div id="goodsTypeList" class="taglist" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">  
            <!--  <div id="tag100" class="j-tag tag" data-key="100">
@@ -61,6 +61,10 @@
        <!-- 根据商品分类 获取相应的商品信息 -->
         <div id="mainwrap" class="mainwrap" style="height: 614px;">
         </div> 
+   </div>
+   
+   <div id="aboutMe" style="display:none;">
+        
    </div>
    <!-- 购物车 -->
    <div id="cart-wrap">

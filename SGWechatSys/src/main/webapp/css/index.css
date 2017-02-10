@@ -60,7 +60,7 @@ ul, ol {
     list-style-type: none;
 }
 i {
-    display: list-item;
+    /*display: list-item;*/
     text-align: -webkit-match-parent;
 }
 .wx-actv-icon {

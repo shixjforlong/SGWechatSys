@@ -107,7 +107,7 @@ function renderGetUserJF(){
         type: "GET",
         success: function(data) {
         	console.log(data);
-        	data.result[0].integration = 28;
+        	//data.result[0].integration = 28;
         	if(data.result[0].integration>0){
         		var jprice =parseInt(data.result[0].integration/10);
         		$("#jf").text("积分为"+data.result[0].integration+",可优惠"+jprice+"元");

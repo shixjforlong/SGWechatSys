@@ -1,7 +1,7 @@
 function renderAllOrder(){
 	var paramObj = GetRequest();
 	var openId = paramObj.openId;
-	
+	$("#openId").text(openId);
 	renderOrderList(openId);
 }
 function renderOrderList(openId){
@@ -21,7 +21,7 @@ function renderOrderList(openId){
         				 status="未支付";
         				 display="block";
         			 }else if(data.result[i].state =="0"){
-        				 status="等待商户接单";
+        				 status="订单已提交，请耐心等待商户确认";
         			 }else if(data.result[i].state =="1"){
         				 status="商户已接单";
         			 }else if(data.result[i].state =="2"){
@@ -40,10 +40,10 @@ function renderOrderList(openId){
         			 
         			 $("#order-list").append("<div class='field'>" +
         						 "<div class='field-head'>"+
-        	                        "<a href='/restaurant/72894237627578801' class='field-head-name'>食国外卖</a>"+
+        	                        "<a href='#' class='field-head-name'>食国外卖</a>"+
         	                          "<span class='field-head-status field-head-status-light'>"+status+"</span>"+
         	                      "</div>"+
-        	                      "<a class='field-item clearfix' href='/order/statusdetail/1724231384054608'>"+
+        	                      "<a class='field-item clearfix' href='#' id='"+data.result[i].orderNo+"'>"+
         	                         "<div class='avatar'>"+
         	                            "<img src='http://101.201.150.141/file/logo.jpeg' class='j-avatar-img avatar-img'/>"+
         	                         "</div>"+
@@ -62,6 +62,13 @@ function renderOrderList(openId){
         	                       "</div>"+
         						"</div>");
         			}
+        		   //查看订单状态和详情
+        		    $(".field-item").click(function () {
+        		    	var orderNo = $(this)[0].id;
+        		    	var openId = $("#openId").text();
+        		    	window.location.href='orderDetail.html?orderNo='+orderNo+"&openId="+openId;
+        		    });
+        		    
         	}else{
         		$("#j-load").css("display","block");
         	}

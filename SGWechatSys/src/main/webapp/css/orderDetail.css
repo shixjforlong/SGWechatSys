@@ -1,0 +1,101 @@
+body{background-color:#fff;}
+.btn-refresh{width:21px;height:18px;position:absolute;top:12px;right:0;color:#fff;font-size:18px;}
+.nav{background-color:#fff;border-bottom:1px solid #ddd;margin-top: -14px;}
+.nav-wrap{height:20px;background-color:#fff;}
+.nav-item{width:50%;float:left;line-height:40px;color:#666;text-align:center;font-size:15px;position:relative;}
+.nav-choose{color:#f99b00;}
+.nav-bottomline,.nav-bottomlineright{width:50%;height:4px;background-color:#f99b00;float:left;margin-top:-3px;}
+.nav-bottomlineright{float:right;}
+.bottombar-icon{position:absolute;left:9px;top:50%;margin-top:-16px;width:32px;height:32px;}
+.bottombar-icon i{display:inline-block;font-size:18px;width:20px;height:20px;text-align:center;}
+.bottombar-icon .icon-clock{color:#afb1b3;font-size:32px;}
+.bottombar-icon .icon-tickO2{color:#2ec494;font-size:32px;}
+.bottombar-icon .icon-crossO2{color:#f99b00;font-size:32px;}
+.orderregion{background-color:#fff;}
+.status-hotelname{display:block;height:44px;line-height:44px;border-bottom:1px solid #f0f0f0;}
+.status-hotelname-icon{float:left;width:23px;height:23px;margin:10px 8px 0px 10px;}
+.status-hotelname-name{color:#555555;font-size:14px;width:74%;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.status-hotelname-back{float:right;font-size:20px;margin:11px 10px 0px 0px;color:#cacaca;}
+.orderregion-title{height:38px;line-height:38px;font-size:14px;color:#333;padding:0px 15px;background:#eee;font-weight:normal;}
+.orderregion-entries{margin-left:15px;padding:8px 0;border-bottom:1px solid #efefef;}
+.orderregion .orderregion-entries:last-child{border-bottom:0;}
+.orderregion-entry{position:relative;padding:7px 0;font-size:14px;}
+.orderregion-entry .name{display:inline-block;width:10em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.orderregion-entry .price,.orderregion-entry .original-price,.orderregion-entry .num{position:absolute;top:8px;font-size:12px;}
+.orderregion-entry .price{right:15px;}
+.orderregion-entry .original-price{right:62px;color:#898989;text-decoration:line-through;}
+.orderregion-entry .num{right:112px;color:#898989;}
+.orderregion-entry .total-original{display:inline-block;vertical-align:middle;margin-right:10px;color:#898989;}
+.orderregion-entry .favor{display:inline-block;vertical-align:middle;color:#898989;}
+.orderregion-entry .pay-price{position:absolute;right:15px;top:8px;}
+.orderregion-entry .pay-price em{color:#fe4d3d;font-size:16px;font-style:normal;}
+.orderregion-list{margin-left:15px;}
+.orderregion-item{padding:12px 0;border-bottom:1px solid #efefef;font-size:14px;}
+.orderregion-list .orderregion-item:last-child{border-bottom:0;}.
+orderregion-item .label{float:left;width:72px;color:#898989;}
+.orderregion-item .order-info{margin:0 15px 5px 72px;}
+.orderregion-item .order-info:last-child{margin-bottom:0;}
+.mt-delivery{display:inline-block;vertical-align:middle;padding:2px;margin-right:6px;background:#ffd300;color:#6b450a;font-size:11px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.info-tip{margin-bottom:10px;}
+.sub-info-tip{font-size:12px;color:#898989;}
+.timeline{margin:30px 0 0 30px;}
+.timeline-item{padding-bottom:20px;position:relative;}
+.timeline-connect{position:absolute;content:'';left:0;top:10px;height:100%;border-left:1px solid #ffdb2a;}
+.timeline-connect-gray{border:1px dashed #f0f0f0;}
+.timeline-logo{width:40px;height:40px;position:absolute;left:-20px;top:-10px;}
+.timeline-block{margin-left:30px;padding-right:10px;}
+.timeline-title{font-size:16px;height:20px;line-height:20px;}
+.timeline-time{color:#999;font-size:11px;float:right;}
+.timeline-sub{font-size:13px;color:#999;margin-top:4px;}
+.bottombar-placeholder{padding:12px 0;height:70px;position:relative;}
+.bottombar{border-top:1px solid #dbdbdb;background-color:#ffffff;padding:12px 0;position:relative;}
+.bottombar-main{margin:0 0 0 51px;}
+.bottombar-info{font-size:15px;line-height:22px;color:#333333;margin-left:13px;margin-bottom:9px;}
+.bottombar-info em{color:#fb4e44;font-style:normal;}
+.bottombar-buttonwrap{height:30px;font-size:15px;}
+.bottombar-buttonwrap button,.bottombar-buttonwrap a{display:inline-block;box-sizing:border-box;height:30px;line-height:30px;font-size:13px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.bottombar-buttonwrap-1{margin-left:13px;margin-right:28px;}
+.bottombar-buttonwrap-1 button,.bottombar-buttonwrap-1 a{width:100%;}
+.bottombar-buttonwrap-2{margin-left:13px;}
+.bottombar-buttonwrap-2 button,.bottombar-buttonwrap-2 a{width:39.14%;margin-right:9.39%;}
+.bottombar-buttonwrap-3 button,.bottombar-buttonwrap-3 a{width:28.68%;margin-right:3.3%;}
+.bottombar-btn-light{border:1px solid #ff4c3c;color:#ff4c3c;background-color:#fff;}
+.bottombar-btn-dark{border:1px solid #999;color:#323232;background-color:#fff;}
+.bottombar-btn-red{border:1px solid #f99b00;color:#f99b00;background-color:#fff;}
+.bottombar-btn-gray{border:1px solid #cdcdcd;color:#fff;background-color:#cdcdcd;}
+#cfm_dialog{max-height:90%;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:-moz-box;display:box;-webkit-box-orient:vertical;-ms-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;}
+.cfm_time_title{line-height:40px;margin-bottom:5px;border-bottom:1px solid #ddd;font-size:16px;text-align:center;}
+#cfm_time_wrap{overflow:hidden;-webkit-box-flex:1;-ms-flex:1 0 auto;-moz-box-flex:1;box-flex:1;}
+.cfm_time_list{margin:0 10px;line-height:32px;font-size:15px;}
+.cfm_time_list li{border-bottom:1px solid #ddd;}
+.cfm_time_list li.hvr{color:#ff6900;}
+.header{background:#fff;border:1px solid #cacaca;}
+.page-name{color:#2f2f2f;}
+.header .i-back{background-position:0 -130px;}
+.coupon-infor{background:rgba(0,0,0,0.4);width:100%;height:30px;line-height:30px;color:#ffffff;font-size:12px;padding-left:14px;}
+.bottombar-down{position:fixed;left:0;bottom:0;width:100%;}
+.coupon-close{position:absolute;right:0px;top:0px;width:40px;height:30px;}
+.coupon-icon{display:block;border:1px solid #ffffff;border-radius:100%;width:13px;height:13px;font-size:10px;line-height:14px;text-align:center;margin-top:7px;}
+.coupon-redimg{width:58%;margin-bottom:15px;}
+.buttondialog-word{font-size:14px;}
+.coupon-tips{font-size:16px;color:#ff320a;margin-bottom:10px;}
+.coupon-ok{color:#434343 !important;}
+.order-discount{font-size:12px;}
+.order-discount .name,.order-discount .price{color:#898989;}
+.order-discount-img{width:15px;height:15px;margin-right:3px;vertical-align:-2px;}
+.buy-again-placeholder{height:44px;margin-top:20px;}
+.buy-again-wrap{position:fixed;left:0;bottom:0;width:100%;height:44px;}
+.buy-again-btn{display:block;width:100%;height:44px;font-size:16px;}
+.https{}.food-subdtl{margin-top:3px;font-size:12px;color:#999;}
+.orderregion-item .label {
+    float: left;
+    width: 72px;
+    color: #898989;
+}
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}

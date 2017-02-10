@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>食国外卖</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressAdd.css" type="text/css" rel="stylesheet" />
+<link href="./css/orderDetail.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="wxi"> 
+   <header id="header" class="header page-header  ">
+      <a class="j-back-link back-wrap" href="javascript:;">
+        <i class="icon i-back"></i>
+      </a>
+      <h1 class="page-name">订单详情</h1>
+      <input type="hidden" id="openId" />
+      <input type="hidden" id="orderNo" />
+   </header>
+   
+   <div id="nav" class="nav">
+    <p class="nav-wrap">
+        <span id="orderState" class="j-nav-item j-nav-status nav-item nav-choose">订单状态</span>
+        <span id="orderDetail" class="j-nav-item j-nav-detail nav-item">订单详情</span>
+        <label class="j-nav-bottomline nav-bottomline"></label>
+    </p>
+   </div>
+    <!-- 订单状态 -->
+   <div id="order-status"> 
+      <div class="timeline"> 
+         <div class="timeline-item" id="01" style="display:none;">  
+            <i class="timeline-connect"></i>
+            <img class="timeline-logo" src="http://101.201.150.141/file/line.png">
+            <div class="timeline-block"> 
+               <p class="timeline-title">订单未支付<span class="timeline-time" id="createTime"></span></p>
+               <p class="timeline-sub">请尽快支付</p>   
+            </div> 
+         </div>  
+         <div class="timeline-item" id="0" style="display:none;">  
+            <i class="timeline-connect"></i>
+            <img class="timeline-logo" src="http://101.201.150.141/file/line.png">
+            <div class="timeline-block"> 
+               <p class="timeline-title">订单已提交<span class="timeline-time" id="payTime"></span></p>
+               <p class="timeline-sub">请耐心等待商家确认</p>   
+            </div> 
+         </div> 
+         <div class="timeline-item" id="1" style="display:none;">  
+            <i class="timeline-connect"></i>  
+            <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
+            <div class="timeline-block"> 
+              <p class="timeline-title">商家已接单<span class="timeline-time" id="orderInTime"></span></p>   
+              <p class="timeline-sub">商品准备中，由食国快送配送</p>   
+            </div> 
+         </div>  
+         <div class="timeline-item" id="2" style="display:none;">  
+           <i class="timeline-connect"></i>  
+           <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
+           <div class="timeline-block"> 
+             <p class="timeline-title">骑手已取货<span class="timeline-time" id="orderOutTime"></span></p>   
+             <p class="timeline-sub">请等待配送</p>   
+           </div> 
+         </div>  
+         <div class="timeline-item" id="3" style="display:none;">  
+              <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
+              <div class="timeline-block"> 
+                 <p class="timeline-title">订单完成<span class="timeline-time" id="orderFinishTime"></span></p>  
+              </div> 
+         </div>  
+       </div> 
+       <div class="bottombar-placeholder"></div> 
+    </div>
+      <!-- 订单详情 -->
+    <div id="order-detail" style="display:none;margin-top: -8px;"> 
+       <div class="orderregion"> 
+          <h1 class="orderregion-title">订单详情</h1> 
+          <a class="status-hotelname" href="#">  
+             <img class="status-hotelname-icon" src="http://101.201.150.141/file/logo.jpeg" alt="">  
+             <label class="status-hotelname-name">食国外卖</label> 
+          </a> 
+          <ul class="orderregion-entries" id="goodsInfo">  
+            
+          </ul>  
+          <ul class="orderregion-entries"> 
+            <li class="orderregion-entry"> 
+              <span class="name">配送费</span> 
+              <span class="price">¥&nbsp;5</span> 
+            </li> 
+          </ul> 
+          <ul class="orderregion-entries"> 
+            <li class="orderregion-entry"> 
+              <span class="name">会员积分兑换</span> 
+              <span class="price" >-¥&nbsp;<span id="integral"></span></span> 
+            </li> 
+          </ul>     
+         <!--  <ul class="orderregion-entries">  
+            <li class="orderregion-entry order-discount"> 
+               <span class="name">
+                  <img class="order-discount-img" src="http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png" alt="">满减优惠</span> 
+                  <span class="price">-￥13</span> 
+           </li>  
+          </ul>  -->
+          <ul class="orderregion-entries"> 
+             <li class="orderregion-entry"> 
+                <span class="pay-price">实付<em>&nbsp;¥<span id="payPrice"></span></em></span> 
+             </li> 
+          </ul> 
+        </div> 
+        <div class="orderregion"> 
+           <h1 class="orderregion-title">配送信息</h1> 
+           <ul class="orderregion-list"> 
+              <li class="orderregion-item"> 
+                 <span class="label">配送地址</span> 
+                 <p class="order-info" id="receiver"></p>
+                 <p class="order-info" id="address"></p> 
+              </li> 
+              <li class="orderregion-item">
+                 <span class="label">配送服务</span>
+                 <p class="order-info">由食国提供配送服务</p>  
+              </li> 
+           </ul> 
+        </div> 
+        <div class="orderregion"> 
+          <h1 class="orderregion-title">订单信息</h1> 
+          <ul class="orderregion-list"> 
+            <li class="orderregion-item"> 
+              <span class="label">订单号码</span> 
+              <p class="order-info" id="orderNo_"></p> 
+            </li> 
+            <li class="orderregion-item"> 
+              <span class="label">订单时间</span> 
+              <p class="order-info" id="orderTime"></p> 
+            </li> 
+            <li class="orderregion-item"> 
+              <span class="label">支付方式</span> 
+              <p class="order-info">  在线支付 </p> 
+            </li>    
+          </ul> 
+        </div>
+         <!-- <div class="buy-again-placeholder"></div> 
+         <div class="buy-again-wrap">
+           <input id="buy-again-btn" class="combtn buy-again-btn" type="button" value="再来一单"> 
+          </div> -->
+   </div>
+   
+   
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script type="text/javascript" src="./orderDetail.js"></script>
+   <script>
+      window.onload=function(){
+    	  renderOrderDetail();
+      }
+   </script>
+</body>
+</html>

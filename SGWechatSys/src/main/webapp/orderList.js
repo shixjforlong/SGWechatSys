@@ -66,6 +66,7 @@ function renderOrderList(openId){
         		    $(".field-item").click(function () {
         		    	var orderNo = $(this)[0].id;
         		    	var openId = $("#openId").text();
+        		    	
         		    	window.location.href='orderDetail.html?orderNo='+orderNo+"&openId="+openId;
         		    });
         		    

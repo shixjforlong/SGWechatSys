@@ -37,7 +37,12 @@ function renderBtnEvent(){
 	        				);
 	        			}
 	        		}
-	        		$("#integral").text(parseInt(data.result[0].integral)/10);
+	        		if(data.result[0].integral){
+	        			$("#integral").text(parseInt(data.result[0].integral)/10);
+	        		}else{
+	        			$("#integralFlag").css("display","none");
+	        		}
+	        		
 	        		$("#payPrice").text(data.result[0].payPrice);
 	        		$("#receiver").text(data.result[0].receiveName+"("+data.result[0].receiveGender+")"+data.result[0].receivePhone);
 	        		$("#address").text(data.result[0].receiveAddress);

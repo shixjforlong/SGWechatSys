@@ -3,6 +3,8 @@ function renderOrderPay(){
 	var orderInfo = paramObj.orderInfo;
 	var orderObj = eval('(' + orderInfo + ')');
 	console.log(orderObj);
+	$("#openId").val(orderObj.openId);
+	$("#orderNo").val(orderObj.orderNo);
 	$("#orderPrice").text("￥"+orderObj.payPrice);
 	$("#price").text("￥"+orderObj.payPrice);
 	
@@ -35,7 +37,9 @@ function renderOrderPay(){
 						},
 						function(res){
 							 if(res.err_msg.trim() == "get_brand_wcpay_request:ok"){
-								window.location.href = "http://www.baidu.com";		
+								 var openId = $("#openId").val();
+							     var orderNo = $("#orderNo").val();
+								window.location.href='orderDetail.html?orderNo='+orderNo+"&openId="+openId;
 							 }
 						});
 					}

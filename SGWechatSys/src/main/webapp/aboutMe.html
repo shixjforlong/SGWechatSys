@@ -8,14 +8,54 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 <meta name="format-detection" content="telephone=no"/>
 <meta http-equiv="X-UA-Compatible" content="edge" />
-<link href="css/order.css" type="text/css" rel="stylesheet" />
-
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressAdd.css" type="text/css" rel="stylesheet" />
+<link href="./css/aboutMe.css" type="text/css" rel="stylesheet" />
 </head>
-<body class="i"> 
+<body class="wxi"> 
    <header id="header" class="header page-header  ">
-       <div class="header-right"></div>
-       <h1 class="j-page-name page-name">关于我们</h1>
+      <h1 class="page-name">关于我们</h1>
    </header>
-   
+   <div id="detail-wrap"> 
+      <div class="detail-region"> 
+        <div class="detail-content"> 
+          <div class="detail-phone">
+             <span class="rest-txt">客服电话：</span>  <span id="phone"></span> 
+          </div> 
+          <div class="detail-address">
+             <span class="rest-txt">商家地址：</span> 
+             <span id="address"></span> 
+          </div> 
+       </div> 
+      </div> 
+      <div class="detail-region"> 
+         <div class="detail-content"> 
+            <div class="detail-time">
+               <span class="rest-txt">配送时间：</span> 
+               <span id="servicetime"></span>
+            </div> 
+            <div class="detail-service">
+               <span class="rest-txt">配送服务：</span>  
+               <span id="service"></span>  
+            </div> 
+         </div> 
+      </div>  
+      <div class="detail-region"> 
+         <div class="detail-content"> 
+            <div class="detail-time">
+               <span class="rest-txt">活动：</span> 
+               <span id="activity"></span>
+            </div> 
+         </div> 
+      </div>  
+  </div>
+      
+   <script type="text/javascript" src="./aboutMe.js"></script>
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script>
+      window.onload=function(){
+    	 renderAboutMe();
+      }
+   </script>
 </body>
 </html>

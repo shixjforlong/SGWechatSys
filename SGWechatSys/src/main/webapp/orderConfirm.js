@@ -24,19 +24,29 @@ function renderBtnClick(){
     var div1=document.getElementById("div1");
     div2.onclick=function(){
        if($("#JPrice").val()>0){
-    	   $("#integration").css("display","block");
+    	   
     	   $("#jifen").text($("#JPrice").val());
     	   
     	   var all = $("#goodsPrice").val();
    		   var distributionCost = $("#distributionCost").text();//配送费
-   		   var finalPrice = parseInt(all) + parseInt(distributionCost)-parseInt($("#JPrice").val());
-   		   $("#total").text("￥"+finalPrice);
-		   $("#paid").text("￥"+finalPrice);
-		   $("#finalPay").text("￥"+finalPrice);
-		   $("#totalPrice").text(finalPrice);
-		
+   		  
     	   div1.className=(div1.className=="close1")?"open1":"close1";
            div2.className=(div2.className=="close2")?"open2":"close2";
+           if(div1.className == "close1" && div2.className == "close2"){
+        	   var finalPrice = parseInt(all) + parseInt(distributionCost);
+       		   $("#total").text("￥"+finalPrice);
+    		   $("#paid").text("￥"+finalPrice);
+    		   $("#finalPay").text("￥"+finalPrice);
+    		   $("#totalPrice").text(finalPrice);
+    		   $("#integration").css("display","none");
+           }else if(div1.className == "open1" && div2.className == "open2"){
+        	   var finalPrice = parseInt(all) + parseInt(distributionCost)-parseInt($("#JPrice").val());
+       		   $("#total").text("￥"+finalPrice);
+    		   $("#paid").text("￥"+finalPrice);
+    		   $("#finalPay").text("￥"+finalPrice);
+    		   $("#totalPrice").text(finalPrice);
+    		   $("#integration").css("display","block");
+           }
        }
     };
 }
@@ -135,12 +145,12 @@ function renderServiceTime(){
 		$("#service_time").text("预约"+times+":00送达");
 	}
 	
-	$("#chooseTime").click(function () {
+	/*$("#chooseTime").click(function () {
 		var goodsStr=$("#goodsStr").val();
     	var openId = $("#openId").val();
     	var times = $("#times").val();
     	window.location.href='chooseTime.html?openId='+openId+"&goodsStr="+goodsStr+"&times="+times;
-	});
+	});*/
 }
 function renderDeliveryAddress(){
 	var openId = $("#openId").val();

@@ -169,6 +169,7 @@ function getGoodsInfoByTypeId(typeId,typeName){
    	        			     "<td>"+goodsName+"</td>"+
    	        			     "<td id='td_"+goodsId+"'>1</td>"+
    	        			     "<td>"+goodsPrice+"</td>"+
+   	        			     "<td style='display:none;'>"+goodsId+"</td>"+
    	        			   +"</tr>"		
    	        	       );
         			}
@@ -180,7 +181,7 @@ function getGoodsInfoByTypeId(typeId,typeName){
         				for(var i=0;i<tableObj.rows.length;i++){
         					for(var j=0;j<tableObj.rows[i].cells.length;j++){
 	                			var cell = tableObj.rows[i].cells[j].innerText;
-							    if(j == 2){
+							    if(j == 3){
 							    	goodsStr += cell+";";
 								}else{
 									goodsStr += cell+",";

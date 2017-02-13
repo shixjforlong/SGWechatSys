@@ -4,19 +4,50 @@ function renderVip(){
 	$("#openId").val(openId);
 	
 	renderGetVipInfoByOpenId();
+	renderVipScore();
+}
+function renderVipScore(){
+	$("#vipScore").click(function () {
+		var openId = $("#openId").val();
+		window.location.href="./vipScore.html?openId="+openId;
+	});
 }
 function renderGetVipInfoByOpenId(){
 	var openId = $("#openId").val();
-	var url="/sapi/vip/list?limit=1&cursor=0&openId="+openId;
+	var url="/wapi/wxuser/list?limit=1&cursor=0&openId="+openId;
     $.ajax({
         url: url,
         type: "GET",
         success: function(data) {
-           if(data.result.length>0){
-        	   $("#integration").text(data.result[0].integration==null?"0":data.result[0].integration);
-               $("#empirical").text(data.result[0].empirical==null?"0":data.result[0].empirical);
-               $("#levelName").text(data.result[0].levelName==null?"非会员":data.result[0].levelName);
-           }
+           
+           $.ajax({
+               url: "/sapi/vip/list?limit=100000&cursor=0",
+               type: "GET",
+               success: function(vip) {
+               	if(vip.result&&vip.result.length>0){
+               		if(data.result&&data.result.length>0){
+               		   for(var j=0;j<vip.result.length;j++){
+                       	  var empiricalU = vip.result[j].empiricalU;
+                       	  var empiricalL = vip.result[j].empiricalL;
+                       	  if(data.result[0].empirical){
+                       		 if(empiricalU<data.result[0].empirical && data.result[0].empirical<empiricalL){
+                           		 data.result[0].levelName = vip.result[j].levelName;
+                           		 data.result[0].levelId = vip.result[j].id;
+                           	 }
+                       	  }
+                       }
+               		}
+               	}
+               	if(data.result.length>0){
+               		$("#image").attr("src",data.result[0].image);
+               		$("#nickName").text(data.result[0].nickName==null?"":data.result[0].nickName);
+             	    $("#integration").text(data.result[0].integration==null?"0":data.result[0].integration);
+                    $("#empirical").text(data.result[0].empirical==null?"0":data.result[0].empirical);
+                    $("#levelName").text(data.result[0].levelName==null?"非会员":data.result[0].levelName);
+                }
+               	
+               }
+         	});
         }
     });
 }

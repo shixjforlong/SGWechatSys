@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>食国外卖</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<link href="./css/index.css" type="text/css" rel="stylesheet" />
+<link href="./css/addressAdd.css" type="text/css" rel="stylesheet" />
+<link href="./css/aboutMe.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="wxi"> 
+   <header id="header" class="header page-header  ">
+     <a class="j-back-link back-wrap" href="javascript:;">
+        <i class="icon i-back"></i>
+      </a>
+      <h1 class="page-name">会员等级晋级说明</h1>
+      <input type="hidden" id="openId" />
+   </header>
+   <div id="detail-wrap"> 
+    <div class="detail-region"> 
+      <div class="detail-content"> 
+      </div>
+    </div>
+  </div>
+      
+   <script type="text/javascript" src="./vipScore.js"></script>
+   <script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
+   <script>
+      window.onload=function(){
+    	 renderVipScore();
+      }
+   </script>
+</body>
+</html>

@@ -18,21 +18,33 @@
       <input type="hidden" id="openId" />
    </header>
    <div id="detail-wrap"> 
-      <div class="detail-region"> 
+      <div class="detail-region" style="margin-top:0px;"> 
         <div class="detail-content"> 
-          <div class="detail-phone">
-             <span class="rest-txt">我的积分：</span>  <span id="integration"></span> 
+          <div class="detail-phone" style="padding: 5px;">
+             <span class="rest-txt"></span>  <span><img id="image" src="" style="width: 55px;"/></span> 
           </div> 
-          <div class="detail-address">
-             <span class="rest-txt">我的会员等级：</span> 
+          <div class="detail-phone">
+             <span class="rest-txt">会员等级：</span> 
              <span id="levelName"></span> 
           </div> 
+           <div class="detail-phone">
+             <span class="rest-txt">积分：</span>  <span id="integration"></span> 
+          </div> 
            <div class="detail-address">
-             <span class="rest-txt">我的经验值：</span> 
+             <span class="rest-txt">经验值：</span> 
              <span id="empirical"></span> 
           </div> 
        </div> 
       </div> 
+      
+      <div class="detail-region"> 
+         <div class="detail-content" id="vipScore"> 
+            <div class="detail-time">
+              <div style="width:80%;"> <span class="rest-txt">会员等级晋级说明</span> </div>
+              <div style="margin-left: 80%;text-align: center;"> <span>></span></div>
+            </div> 
+         </div> 
+      </div>  
       
   </div>
       

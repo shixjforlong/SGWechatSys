@@ -1,6 +1,20 @@
 function renderTakeOutOrder(){
+	getBussinessInfo();
 	getAllGoodsType();//获取所有商品分类
 	//renderBtn();
+}
+function getBussinessInfo(){
+	$.ajax({
+        url: "/sapi/business?number=shiguo",
+        type: "GET",
+        success: function(data) {
+            if(data.result[0].servicetime){
+            	var startTime = data.result[0].servicetime.split("-")[0];
+            	var endTime = data.result[0].servicetime.split("-")[1];
+            	
+            }
+        }
+    });
 }
 function renderBtn(){
 	$("#business").click(function () {

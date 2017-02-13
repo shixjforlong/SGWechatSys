@@ -51,6 +51,39 @@ function renderSave(){
 			alert("请填写收货地址");
 			return;
 		}
+		//判断收货地址是否在配送范围内
+		//根据id获取收货地址的详细信息
+		$.ajax({
+            url: "/wapi/map/baidu/getLocation?address="+address,
+            type: "GET",
+            success: function(data) {
+            	var addressObj = eval('(' + data + ')');
+            	if(addressObj.status =="OK"){
+            		var location_c = addressObj.result.location;//收货地址的经纬度
+            		if(location_c.lat && location_c.lng){
+            			$.ajax({
+                            url: "/wapi/map/baidu/getLocation?address=北京市昌平区回龙观紫晶七星广场A130室",
+                            type: "GET",
+                            success: function(datas) {
+                            	var addressObj_ = eval('(' + datas + ')');
+                            	var location_s = addressObj_.result.location;//商家店铺的经纬度
+                            	console.log(location_c);
+                            	console.log(location_s);
+                            	var distance = getDistanceFromXtoY(location_c.lat,location_c.lng,location_s.lat,location_s.lng);
+                            	console.log(parseInt(distance));
+                            	if(parseInt(distance)>5000){
+                            		alert("不在配送范围内");
+                            	}
+                            }
+                		});
+            		}else{
+            			alert("请输入正确的地址");
+            		}
+            	}else{
+            		alert("请输入正确的地址");
+            	}
+            }
+		});
 		var data={
 			openId:openId,
 			receiveName:name,
@@ -61,7 +94,7 @@ function renderSave(){
 		};
 		console.log(data);
 		var paramObj = GetRequest();
-		if(paramObj && paramObj.addressId){
+		/*if(paramObj && paramObj.addressId){
 			//修改
 			$.ajax({
 				url:"/wapi/wuAddress/"+paramObj.addressId,
@@ -87,7 +120,7 @@ function renderSave(){
 					window.location.href='addressList.html?openId='+openId;
 	            }
 			});
-		}
+		}*/
 		
 	});
 }
@@ -113,4 +146,16 @@ function GetRequest() {
 	      }
 	 }
 	 return theRequest;
+}
+function getDistanceFromXtoY(lat_a, lng_a, lat_b, lng_b){
+	var pk = 180 / 3.14169;
+	var a1 = lat_a / pk; 
+	var a2 = lng_a / pk;  
+	var b1 = lat_b / pk;  
+	var b2 = lng_b / pk; 
+	var t1 = Math.cos(a1) * Math.cos(a2) * Math.cos(b1) * Math.cos(b2);
+	var t2 = Math.cos(a1) * Math.sin(a2) * Math.cos(b1) * Math.sin(b2);  
+	var t3 = Math.sin(a1) * Math.sin(b1);  
+	var tt = Math.acos(t1 + t2 + t3);  
+	return 6366000 * tt;
 }

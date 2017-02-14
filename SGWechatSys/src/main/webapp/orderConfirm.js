@@ -15,6 +15,8 @@ function renderOrderConfirm(){
 	if(paramObj.times){
 		$("#times").val(paramObj.times);
 	}
+	
+	$("#JPriceUse").val("");//使用积分
 
 	renderDeliveryAddress();//获取用户的配送地址
 	renderServiceTime();//送达时间
@@ -43,12 +45,14 @@ function renderBtnClick(){
     		   $("#finalPay").text("￥"+finalPrice);
     		   $("#totalPrice").text(finalPrice);
     		   $("#integration").css("display","none");
+    		   $("#JPriceUse").val("");
            }else if(div1.className == "open1" && div2.className == "open2"){
         	   var finalPrice = parseInt(all) + parseInt(distributionCost)-parseInt($("#JPrice").val());
        		   $("#total").text("￥"+finalPrice);
     		   $("#paid").text("￥"+finalPrice);
     		   $("#finalPay").text("￥"+finalPrice);
     		   $("#totalPrice").text(finalPrice);
+    		   $("#JPriceUse").val($("#JPrice").val());
     		   $("#integration").css("display","block");
            }
        }
@@ -66,7 +70,7 @@ function renderSubmitOrder(){
 		var goodsInfo = $("#goodsStr").val();//商品信息
 		var gtotalPrice = $("#goodsPrice").val();//商品总金额
 		var distributionCost = $("#distributionCost").text();//配送费
-		var integral = parseInt($("#JPrice").val())*10;//积分扣除
+		var integral = parseInt($("#JPriceUse").val())*10;//积分扣除
 		var payPrice = $("#totalPrice").text();//支付金额 = 商品总金额 + 配送费 - 此次消费积分
 		var empirical = parseInt(payPrice)*10;//此次消费获得的经验值
 		var getIntegral= parseInt(payPrice);//此次消费获得的积分值

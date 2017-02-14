@@ -91,19 +91,19 @@ function renderBtnEvent(){
 	        		}else {
 	        			 $("#01").css("display","none");
 	        			 if(state == "0"){//订单已提交 等待商家确认
-	        				 $("#0").css("display","block");
+	        				 $("#0").children("i").removeClass("timeline-connect-gray");
 	        			 }else if(state == "1"){//商家已接单
-	        				 $("#0").css("display","block");
-	        				 $("#1").css("display","block");
+	        				 $("#0").children("i").removeClass("timeline-connect-gray");
+	        				 $("#1").children("i").removeClass("timeline-connect-gray");
 	        			 }else if(state == "2"){//骑手已取货
-	        				 $("#0").css("display","block");
-	        				 $("#1").css("display","block");
-	        				 $("#2").css("display","block");
+	        				 $("#0").children("i").removeClass("timeline-connect-gray");
+	        				 $("#1").children("i").removeClass("timeline-connect-gray");
+	        				 $("#2").children("i").removeClass("timeline-connect-gray");
 	        			 }else if(state == "3"){//订单完成
-	        				 $("#0").css("display","block");
-	        				 $("#1").css("display","block");
-	        				 $("#2").css("display","block");
-	        				 $("#3").css("display","block");
+	        				 $("#0").children("i").removeClass("timeline-connect-gray");
+	        				 $("#1").children("i").removeClass("timeline-connect-gray");
+	        				 $("#2").children("i").removeClass("timeline-connect-gray");
+	        				 $("#3").children("i").removeClass("timeline-connect-gray");
 	        			 }
 	        		}
 	        	}

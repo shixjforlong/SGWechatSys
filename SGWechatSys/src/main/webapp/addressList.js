@@ -36,7 +36,7 @@ function renderAddressList(){
             				}
         				}
         				$("#address-list").append(
-        						"<li class='"+liClass+"' id='"+data.result[i].id+"'>"+
+        						"<li class='"+liClass+"' id='"+data.result[i].id+"' number='"+data.result[i].number+"'>"+
         			             "<div class='contect-button'>"+
         			               "<a class='edit j-edit' address-id='"+data.result[i].id+"' href='javascritp:;'></a>"+
         			               "<a class='dele j-dele' address-id='"+data.result[i].id+"' href='javascript:;'></a>"+
@@ -57,9 +57,10 @@ function renderAddressList(){
         				
         				$("#"+data.result[i].id).bind("click", function(){
         					var addressId = $(this)[0].id;
+        					var number = $(this)[0].attributes[2].value;
         					var openId = $("#openId").val();
         					var goodsStr = $("#goodsStr").val();
-        					window.location.href="./orderConfirm.html?addressId="+addressId+"&openId="+openId+"&goodsStr="+goodsStr;
+        					window.location.href="./orderConfirm.html?addressId="+addressId+"&openId="+openId+"&goodsStr="+goodsStr+"&number="+number;
         				});
         				
         				$(".edit").click(function () {

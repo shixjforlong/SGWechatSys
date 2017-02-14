@@ -30,6 +30,7 @@ function renderSave(){
 	
 	$("#saveAddress").click(function () {
 		//获取页面信息
+		var number = "";
 		var openId = $("#openId").val();
 		var name = $("#name").val();//收货人姓名
 		var gender = $(".customer-gender-check")[0].attributes[1].value;//收货人性别
@@ -62,20 +63,68 @@ function renderSave(){
             		var location_c = addressObj.result.location;//收货地址的经纬度
             		if(location_c.lat && location_c.lng){
             			$.ajax({
-                            url: "/wapi/map/baidu/getLocation?address=北京市昌平区回龙观紫晶七星广场A130室",
-                            type: "GET",
-                            success: function(datas) {
-                            	var addressObj_ = eval('(' + datas + ')');
-                            	var location_s = addressObj_.result.location;//商家店铺的经纬度
-                            	console.log(location_c);
-                            	console.log(location_s);
-                            	var distance = getDistanceFromXtoY(location_c.lat,location_c.lng,location_s.lat,location_s.lng);
-                            	console.log(parseInt(distance));
-                            	if(parseInt(distance)>5000){
-                            		alert("不在配送范围内");
-                            	}
-                            }
-                		});
+            		        url: "/sapi/business/list",
+            		        type: "GET",
+            		        success: function(data) {
+            		        	var enabled= 0;
+            		            if(data.result.length>0){
+            		            	for(var i=0;i<data.result.length;i++){
+            		            		var lat = data.result[i].lat;
+            		            		var lng = data.result[i].lng;
+            		            		var distance = getDistanceFromXtoY(location_c.lat,location_c.lng,lat,lng);
+            		            		console.log(parseInt(distance));
+            		                	if(parseInt(distance)>5000){
+            		                		enabled = enabled +1;
+            		                	}else{
+            		                		number = data.result[i].number;
+            		                		break;
+            		                	}
+            		            	}
+            		            	if(enabled == data.result.length){
+            		            		alert("不在配送范围");
+            		            	}else{
+            		            	 var data={
+            		            				openId:openId,
+            		            				receiveName:name,
+            		            				receiveGender:gender,
+            		            				receivePhone:phone,
+            		            				receiveAddress:address,
+            		            				enabled:'0',
+            		            				number:number
+            		            	 };
+            		            	 console.log(data);
+            		            	 var paramObj = GetRequest();
+            		            	 if(paramObj && paramObj.addressId){
+            		        			//修改
+            		        			$.ajax({
+            		        				url:"/wapi/wuAddress/"+paramObj.addressId,
+            		        				type : "PUT",
+            		        				"contentType": "application/json", 
+            		        				data:JSON.stringify(data),
+            		        				success: function(data) {
+            		        					console.log(data);
+            		        					//跳转
+            		        					window.location.href='addressList.html?openId='+openId;
+            		        	            }
+            		        			});
+            		        		}else{
+            		        			//新增
+            		        			$.ajax({
+            		        				url:"/wapi/wuAddress/add",
+            		        				type : "post",
+            		        				"contentType": "application/json", 
+            		        				data:JSON.stringify(data),
+            		        				success: function(data) {
+            		        					console.log(data);
+            		        					//跳转
+            		        					window.location.href='addressList.html?openId='+openId;
+            		        	            }
+            		        			});
+            		        		}
+            		              }
+            		            }
+            		        }
+            			});
             		}else{
             			alert("请输入正确的地址");
             		}
@@ -84,43 +133,6 @@ function renderSave(){
             	}
             }
 		});
-		var data={
-			openId:openId,
-			receiveName:name,
-			receiveGender:gender,
-			receivePhone:phone,
-			receiveAddress:address,
-			enabled:'0'
-		};
-		console.log(data);
-		var paramObj = GetRequest();
-		/*if(paramObj && paramObj.addressId){
-			//修改
-			$.ajax({
-				url:"/wapi/wuAddress/"+paramObj.addressId,
-				type : "PUT",
-				"contentType": "application/json", 
-				data:JSON.stringify(data),
-				success: function(data) {
-					console.log(data);
-					//跳转
-					window.location.href='addressList.html?openId='+openId;
-	            }
-			});
-		}else{
-			//新增
-			$.ajax({
-				url:"/wapi/wuAddress/add",
-				type : "post",
-				"contentType": "application/json", 
-				data:JSON.stringify(data),
-				success: function(data) {
-					console.log(data);
-					//跳转
-					window.location.href='addressList.html?openId='+openId;
-	            }
-			});
-		}*/
 		
 	});
 }

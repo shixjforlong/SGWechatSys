@@ -3,10 +3,14 @@ function renderOrderConfirm(){
 	var paramObj = GetRequest();
 	var goodsStr = paramObj.goodsStr;
 	var openId = paramObj.openId;
+	var number = paramObj.number;
 	$("#openId").val(openId);
 	$("#goodsStr").val(goodsStr);
 	if(paramObj.addressId){
 		$("#addressId").val(paramObj.addressId);
+	}
+	if(paramObj.number){
+		$("#number").val(paramObj.number);
 	}
 	if(paramObj.times){
 		$("#times").val(paramObj.times);
@@ -71,10 +75,12 @@ function renderSubmitOrder(){
 			alert("请选择收货地址");
 		}
 		var openId = $("#openId").val();
+		var number = $("#number").val();
 		var now = new Date().getTime();
 		var orderNo = now;
 		var finalData={
 				openId:openId,
+				number:number,
 				orderNo:orderNo,
 				receiveName:receiveName,
 				receiveGender:receiveGender,
@@ -177,6 +183,7 @@ function renderDeliveryAddress(){
                   				$("#gender").text("女士");
                   			 }
                   			 $("#addressId").val(data.result[i].id);
+                  			 $("#number").val(data.result[i].number);
               			}
               			
               		}else{
@@ -190,6 +197,7 @@ function renderDeliveryAddress(){
                   				$("#gender").text("女士");
                   			 }
                   			 $("#addressId").val(data.result[i].id);
+                  			 $("#number").val(data.result[i].number);
                   			 break;
                   		 }
               		}

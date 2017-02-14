@@ -1,11 +1,11 @@
 function renderTakeOutOrder(){
-	getBussinessInfo();
+	//getBussinessInfo();
 	getAllGoodsType();//获取所有商品分类
 	//renderBtn();
 }
 function getBussinessInfo(){
 	$.ajax({
-        url: "/sapi/business?number=shiguo",
+        url: "/sapi/business/list",
         type: "GET",
         success: function(data) {
             if(data.result[0].servicetime){

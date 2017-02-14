@@ -19,7 +19,16 @@ function renderOrderList(openId){
         			 var display="none";
         			 if(data.result[i].state =="-1"){
         				 status="未支付";
-        				 display="block";
+        				 var orderCreateTime = data.result[i].createTime*1000;
+        				 var timestamp=new Date().getTime();
+        				 var s = timestamp - orderCreateTime;
+        				 if(s > 30*60*1000){//超过30分钟未支付，订单自动取消
+        					 status="订单取消";
+        					 display="none";
+        				 }else{
+        					 display="block";
+        				 }
+        				 
         			 }else if(data.result[i].state =="0"){
         				 status="订单已提交，请耐心等待商户确认";
         			 }else if(data.result[i].state =="1"){
@@ -57,7 +66,7 @@ function renderOrderList(openId){
         	                       "<div class='field-console'>"+
         	                          "<div class='field-console-btns'>"+
         	                           // "<a class='combtn field-btn'   href='' >评价</a>"+
-        	                             "<button class='j-field-buy-again combtn field-btn-gray' data-poi-id='172423' data-poi-valid='1' data-view-id='1724231384054608' id='pay' style='display:"+display+";'>立即支付</button>"+
+        	                             "<button orderNo="+data.result[i].orderNo+"  price="+data.result[i].payPrice+" class='j-field-buy-again combtn field-btn-gray' data-poi-id='172423' data-poi-valid='1' data-view-id='1724231384054608' id='pay' style='display:"+display+";'>支付</button>"+
         	                          "</div>"+
         	                       "</div>"+
         						"</div>");
@@ -70,6 +79,48 @@ function renderOrderList(openId){
         		    	window.location.href='orderDetail.html?orderNo='+orderNo+"&openId="+openId;
         		    });
         		    
+        		    $("#pay").click(function () {
+        		    	var openId = $("#openId").text();
+        		    	var orderNo = $(this)[0].attributes[0].value;
+        		    	var price = $(this)[0].attributes[1].value;
+					    $("#orderNo").val(orderNo);
+        				$.ajax({
+        					url:"/wapi/wechat/prePayId?openId="+openId+"&orderNo="+orderNo+"&price="+price,
+        					type : "GET",
+        					"contentType": "application/json", 
+        					success: function(data) {
+        						var appId = data.appId;
+        						var nonce_str = data.nonce_str;
+        						var prePayId = data.prePayId;
+        						var time = new Date().getTime()/1000;
+        						time = (time+"").substring(0,(time+"").length-4);
+        						
+        						$.ajax({
+        							url:"/wapi/wechat/wechatSign?appId="+appId+"&timeStamp="+time+"&nonceStr="+nonce_str+"&packageName=prepay_id="+prePayId,
+        							type : "GET",
+        							"contentType": "application/json", 
+        							success: function(data) {
+        								var sign = data.paySign;
+        								WeixinJSBridge.invoke('getBrandWCPayRequest',{
+        									"appId" : appId,
+        									"timeStamp":time,
+        									"nonceStr" : nonce_str,
+        									"package" : "prepay_id="+prePayId,
+        									"signType" : "MD5",
+        									"paySign" : sign
+        								},
+        								function(res){
+        									 if(res.err_msg.trim() == "get_brand_wcpay_request:ok"){
+        										 var openId = $("#openId").val();
+        									     var orderNo = $("#orderNo").val();
+        										window.location.href='orderDetail.html?orderNo='+orderNo+"&openId="+openId;
+        									 }
+        								});
+        							}
+        						});
+        		            }
+        				});
+        		    });
         	}else{
         		$("#j-load").css("display","block");
         	}

@@ -20,6 +20,8 @@
       <h1 class="page-name">订单详情</h1>
       <input type="hidden" id="openId" />
       <input type="hidden" id="orderNo" />
+      <input type="hidden" id="price" />
+      <input type="hidden" id="orderId" />
    </header>
    
    <div id="nav" class="nav">
@@ -37,9 +39,9 @@
             <img class="timeline-logo" src="http://101.201.150.141/file/line.png">
             <div class="timeline-block"> 
                <p class="timeline-title">订单未支付<span class="timeline-time" id="createTime"></span></p>
-               <p class="timeline-sub">请尽快支付</p>   
+               <p class="timeline-sub">请尽快支付,30分钟后订单自动取消</p>   
             </div> 
-         </div>  
+         </div>
          <div class="timeline-item" id="0" >  
             <i class="timeline-connect timeline-connect-gray"></i>
             <img class="timeline-logo" src="http://101.201.150.141/file/line.png">
@@ -52,26 +54,55 @@
             <i class="timeline-connect timeline-connect-gray"></i>  
             <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
             <div class="timeline-block"> 
-              <p class="timeline-title">商家已接单<span class="timeline-time" id="orderInTime"></span></p>   
-              <p class="timeline-sub">商品准备中，由食国快送配送</p>   
+              <p class="timeline-title"><span id="1_title">商家已接单</span><span class="timeline-time" id="orderInTime"></span></p>   
+              <p class="timeline-sub" id="1_sub">商品准备中，由食国快送配送</p>   
             </div> 
          </div>  
          <div class="timeline-item" id="2">  
            <i class="timeline-connect timeline-connect-gray"></i>  
            <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
            <div class="timeline-block"> 
-             <p class="timeline-title">骑手已取货<span class="timeline-time" id="orderOutTime"></span></p>   
-             <p class="timeline-sub">请等待配送</p>   
+             <p class="timeline-title"><span id="2_title">商品正在配送中</span><span class="timeline-time" id="orderOutTime"></span></p>   
+             <p class="timeline-sub" id="2_sub">请耐心等待配送</p>   
            </div> 
          </div>  
-         <div class="timeline-item" id="3">  
+          <div class="timeline-item" id="3">  
+              <i class="timeline-connect timeline-connect-gray" id="finishLine" style="display:none;"></i> 
               <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
               <div class="timeline-block"> 
-                 <p class="timeline-title">订单完成<span class="timeline-time" id="orderFinishTime"></span></p>  
+                 <p class="timeline-title"><span id="3_title">订单完成</span><span class="timeline-time" id="orderFinishTime"></span></p> 
               </div> 
-         </div>  
+         </div>
+         <div class="timeline-item" id="4" style="display:none;">  
+              <img class="timeline-logo" src="http://101.201.150.141/file/line.png"> 
+              <div class="timeline-block"> 
+                 <p class="timeline-title" id="4_title">订单已取消<span class="timeline-time" id="orderCancelTime"></span></p>
+                 <p class="timeline-sub" id="4_sub">取消已支付的订单,系统自动退款,请注意查收</p>    
+              </div> 
+         </div>
        </div> 
        <div class="bottombar-placeholder"></div> 
+       <div class="bottombar-down" id="orderStateDo" style="display:none;">    
+         <div class="bottombar">  
+           <div class="bottombar-main">   
+             <div class="bottombar-info"> <p>预计送达&nbsp;<span id="serviceTime" style="color: #fb4e44;font-style: normal;"></span></p> </div>   
+             <div class="bottombar-buttonwrap bottombar-buttonwrap-2">  
+               <button id="btn-hasten" class="combtn bottombar-btn-dark">催单</button>                     
+               <button id="btn-cancelorder" class="combtn bottombar-btn-dark">取消订单</button> 
+               <button id="btn-received" class="combtn bottombar-btn-red" style="display:none;">确认收货</button>  
+               </div> 
+           </div> 
+         </div>  
+       </div>
+       <div class="bottombar-down" id="orderPay" style="display:none;">
+         <div class="bottombar"> 
+           <div class="bottombar-main">  
+           <div class="bottombar-buttonwrap bottombar-buttonwrap-1">                       
+               <button  id="pay" class="combtn bottombar-btn-red">立即支付</button>        
+            </div> 
+           </div> 
+          </div> 
+       </div>
     </div>
       <!-- 订单详情 -->
     <div id="order-detail" style="display:none;margin-top: -8px;"> 

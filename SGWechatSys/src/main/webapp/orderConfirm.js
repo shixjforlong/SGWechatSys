@@ -66,7 +66,14 @@ function renderSubmitOrder(){
 	    var receivePhone = $("#phone").text();
 		var receiveAddress = $("#address").text();
 		
-		var serviceTime = $("#service_time").text();//送达时间
+		var now = new Date();
+		var time = now.getTime() + 1000*60*40;//往后推40分钟
+		var newTime = new Date(time);
+		var H = newTime.getHours(); //获取小时
+		var M = newTime.getMinutes(); //获取分钟
+		$("#serviceTime").val(H+":"+M);
+		
+		var serviceTime = $("#serviceTime").val();//送达时间
 		var goodsInfo = $("#goodsStr").val();//商品信息
 		var gtotalPrice = $("#goodsPrice").val();//商品总金额
 		var distributionCost = $("#distributionCost").text();//配送费
@@ -143,17 +150,25 @@ function renderGetUserJF(){
 }
 function renderServiceTime(){
 	var times = $("#times").val();
-	if(times == '0' || times == '' || times == null){
+	/*if(times == '0' || times == '' || times == null){
 		var now = new Date();
 		var time = now.getTime() + 1000*60*40;//往后推40分钟
 		var newTime = new Date(time);
 		var H = newTime.getHours(); //获取小时
 		var M = newTime.getMinutes(); //获取分钟
+		$("#serviceTime").val(H+":"+M);
 		$("#service_time").text("立即送达 (大约"+H+":"+M+"送达)");
 		
 	}else{
 		$("#service_time").text("预约"+times+":00送达");
-	}
+	}*/
+	var now = new Date();
+	var time = now.getTime() + 1000*60*40;//往后推40分钟
+	var newTime = new Date(time);
+	var H = newTime.getHours(); //获取小时
+	var M = newTime.getMinutes(); //获取分钟
+	$("#serviceTime").val(H+":"+M);
+	$("#service_time").text("立即送达 (大约"+H+":"+M+"送达)");
 	
 	/*$("#chooseTime").click(function () {
 		var goodsStr=$("#goodsStr").val();

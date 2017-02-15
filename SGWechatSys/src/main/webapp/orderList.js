@@ -17,26 +17,22 @@ function renderOrderList(openId){
         		for(var i=0;i<data.result.length>0;i++){
         			 var status="";
         			 var display="none";
+        			 var bardisplay="none";
+        			 var state="";
         			 if(data.result[i].state =="-1"){
         				 status="未支付";
-        				 var orderCreateTime = data.result[i].createTime*1000;
-        				 var timestamp=new Date().getTime();
-        				 var s = timestamp - orderCreateTime;
-        				 if(s > 30*60*1000){//超过30分钟未支付，订单自动取消
-        					 status="订单取消";
-        					 display="none";
-        				 }else{
-        					 display="block";
-        				 }
-        				 
-        			 }else if(data.result[i].state =="0"){
-        				 status="订单已提交，请耐心等待商户确认";
+        				 bardisplay="block";
+        			 }
+        			 if(data.result[i].state =="0"){
+        				 status="订单已提交，等待商家确认";
         			 }else if(data.result[i].state =="1"){
         				 status="商户已接单";
         			 }else if(data.result[i].state =="2"){
-        				 status="商品派送中";
+        				 status="商品配送中";
         			 }else if(data.result[i].state =="3"){
         				 status="订单完成";
+        			 }else if(data.result[i].state =="4"){
+        				 status="订单取消";
         			 }
         			 var time = new Date(data.result[i].createTime*1000);
         			 var y = time.getFullYear();
@@ -49,7 +45,7 @@ function renderOrderList(openId){
         			 
         			 $("#order-list").append("<div class='field'>" +
         						 "<div class='field-head'>"+
-        	                        "<a href='#' class='field-head-name'>食国外卖</a>"+
+        	                        "<a href='#' class='field-head-name' id='toHome'>食国外卖</a>"+
         	                          "<span class='field-head-status field-head-status-light'>"+status+"</span>"+
         	                      "</div>"+
         	                      "<a class='field-item clearfix' href='#' id='"+data.result[i].orderNo+"'>"+
@@ -63,14 +59,19 @@ function renderOrderList(openId){
         	                         "</div>"+
         	                         "<i class='field-arrow icon-arrow-right'></i>"+
         	                       "</a>"+
-        	                       "<div class='field-console'>"+
+        	                       "<div class='field-console' style='display:"+bardisplay+";'>"+
         	                          "<div class='field-console-btns'>"+
         	                           // "<a class='combtn field-btn'   href='' >评价</a>"+
-        	                             "<button orderNo="+data.result[i].orderNo+"  price="+data.result[i].payPrice+" class='j-field-buy-again combtn field-btn-gray' data-poi-id='172423' data-poi-valid='1' data-view-id='1724231384054608' id='pay' style='display:"+display+";'>支付</button>"+
+        	                             "<button orderNo="+data.result[i].orderNo+"  price="+data.result[i].payPrice+" class='j-field-buy-again combtn field-btn-gray' data-poi-id='172423' data-poi-valid='1' data-view-id='1724231384054608' id='pay'>支付</button>"+
         	                          "</div>"+
         	                       "</div>"+
         						"</div>");
         			}
+        		    $("#toHome").click(function () {
+        		    	var openId = $("#openId").text();
+        		    	window.location.href='takeOutOrder.html?openId='+openId;
+        		    });
+        		
         		   //查看订单状态和详情
         		    $(".field-item").click(function () {
         		    	var orderNo = $(this)[0].id;

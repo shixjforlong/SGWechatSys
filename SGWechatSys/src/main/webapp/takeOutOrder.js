@@ -1,7 +1,6 @@
 function renderTakeOutOrder(){
-	//getBussinessInfo();
+	getBussinessInfo();//判断店铺打烊时间
 	getAllGoodsType();//获取所有商品分类
-	//renderBtn();
 }
 function getBussinessInfo(){
 	$.ajax({
@@ -15,23 +14,6 @@ function getBussinessInfo(){
             }
         }
     });
-}
-function renderBtn(){
-	$("#business").click(function () {
-		$("#menu").removeClass("selected");
-		$("#business").addClass("selected");
-		
-		$("#menuwrap").css("display","none");
-		$("#aboutMe").css("display","block");
-		
-	});
-    $("#menu").click(function () {
-    	$("#business").removeClass("selected");
-    	$("#menu").addClass("selected");
-    	
-    	$("#menuwrap").css("display","block");
-		$("#aboutMe").css("display","none");
-	});
 }
 function getAllGoodsType(){
 	var paramObj = GetRequest();
@@ -98,8 +80,8 @@ function getGoodsInfoByTypeId(typeId,typeName){
             	                      "<div class='j-foodname foodname'>"+data.result[i].name+"</div>"+
             	                      "<div class='food-desc'>"+data.result[i].descript+"</div>"+
             	                      "<div class='food-content-sub'>"+ 
-            	                        "<span>月售&nbsp;0</span>"+
-            	                        "<span class='food-good'>赞4</span>"+ 
+            	                        //"<span>月售&nbsp;0</span>"+
+            	                        //"<span class='food-good'>赞4</span>"+ 
             	                      "</div>"+ 
             	                      "<div class='food-price-region'>"+  
             	                        "<span class='food-price' id='price_"+i+"' val='"+data.result[i].price/100+"' >¥"+(data.result[i].price/100)+"</span>"+   

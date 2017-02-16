@@ -301,14 +301,26 @@ function reminderOrder(reminderState,reminderTime,reminderReplyTime,payTime,orde
 			if(payTime<reminderTime && reminderTime<orderInTime){
 				stateFlag = 0;
 			}
+		}else{
+			if(payTime<reminderTime){
+				stateFlag = 0;
+			}
 		}
 		if(orderOutTime){
 			if(orderInTime<reminderTime&&reminderTime<orderOutTime){
 				stateFlag = 1;
 			}
+		}else{
+			if(orderInTime<reminderTime){
+				stateFlag = 1;
+			}
 		}
 		if(orderFinishTime){
 			if(orderOutTime<reminderTime&&reminderTime<orderFinishTime){
+				stateFlag = 2;
+			}
+		}else{
+			if(orderOutTime<reminderTime){
 				stateFlag = 2;
 			}
 		}
@@ -328,6 +340,7 @@ function reminderOrder(reminderState,reminderTime,reminderReplyTime,payTime,orde
 			         $("#reminderTime").text(getTimeByMin(reminderTime));
 		        }
 		}else if(reminderState == "2"){
+			console.log(stateFlag);
 			$("#"+stateFlag).after(
 					"<div class='timeline-item' id='re_1'>"+ 
 		              "<i class='timeline-connect' id='finishLine'></i>"+

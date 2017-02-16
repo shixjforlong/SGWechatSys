@@ -1,6 +1,5 @@
 function renderTakeOutOrder(){
 	getBussinessInfo();//判断店铺打烊时间
-	getAllGoodsType();//获取所有商品分类
 }
 function getBussinessInfo(){
 	$.ajax({
@@ -11,7 +10,44 @@ function getBussinessInfo(){
             	var startTime = data.result[0].servicetime.split("-")[0];
             	var endTime = data.result[0].servicetime.split("-")[1];
             	
+            	var start_1=parseInt(startTime.split(":")[0]);
+            	var start_2=parseInt(startTime.split(":")[1]);
+            	var end_1=parseInt(endTime.split(":")[0]);
+            	var end_2=parseInt(endTime.split(":")[1]);
+            	console.log(start_1+"====="+start_2);
+            	console.log(end_1+"====="+end_2);
+            	
+            	var now = new Date();
+        		var time = now.getTime();//往后推40分钟
+        		var newTime = new Date(time);
+        		var H = newTime.getHours(); //获取小时
+        		var M = newTime.getMinutes(); //获取分钟
+        		console.log(H+"===="+M);
+        		
+        		if(H>start_1 && H<end_1){
+        			$("#shopcart").text("购物车空空如也");
+        			$("#shopOpenFlag").val("0");
+        			console.log("正常营业");
+        		}else if(H==start_1 && M>start_2){
+        			$("#shopcart").text("购物车空空如也");
+        			$("#shopOpenFlag").val("0");
+        			console.log("正常营业");
+        		}else if(H==start_1 && M==start_2){
+        			$("#shopcart").text("购物车空空如也");
+        			$("#shopOpenFlag").val("0");
+        			console.log("正常营业");
+        		}else if(H>start_1 && H==end_1 && M<end_2){
+        			$("#shopcart").text("购物车空空如也");
+        			$("#shopOpenFlag").val("0");
+        			console.log("正常营业");
+        		}else{
+        			$("#shopOpenFlag").val("1");
+        			$("#shopcart").text("店铺休息中");
+        			console.log("店铺休息中");
+        		}
+        		
             }
+            getAllGoodsType();//获取所有商品分类
         }
     });
 }
@@ -25,7 +61,7 @@ function getAllGoodsType(){
         url: url,
         type: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             if(data.result && data.result.length>0){
            	 for(var i=0;i<data.result.length;i++){
            		 $("#goodsTypeList").append(
@@ -58,7 +94,7 @@ function getGoodsInfoByTypeId(typeId,typeName){
         url: url,
         type: "GET",
         success: function(data) {
-            console.log(data);
+           // console.log(data);
             $("#mainwrap").html("");
             $("#mainwrap").append(
      		       "<div class='foodlistwrap' style='margin-top:-12px;transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);'>"+
@@ -80,8 +116,6 @@ function getGoodsInfoByTypeId(typeId,typeName){
             	                      "<div class='j-foodname foodname'>"+data.result[i].name+"</div>"+
             	                      "<div class='food-desc'>"+data.result[i].descript+"</div>"+
             	                      "<div class='food-content-sub'>"+ 
-            	                        //"<span>月售&nbsp;0</span>"+
-            	                        //"<span class='food-good'>赞4</span>"+ 
             	                      "</div>"+ 
             	                      "<div class='food-price-region'>"+  
             	                        "<span class='food-price' id='price_"+i+"' val='"+data.result[i].price/100+"' >¥"+(data.result[i].price/100)+"</span>"+   
@@ -103,6 +137,13 @@ function getGoodsInfoByTypeId(typeId,typeName){
             	
             	var m = [];
             	$(".i-add-food").click(function () {
+            		
+            		var shopOpenFlag = $("#shopOpenFlag").val();
+            		if(shopOpenFlag == "1"){
+            			alert("店铺休息中");
+            			return;
+            		}
+            		
         			$("#add_"+$(this)[0].id).css("display","block");
         			$("#add_"+$(this)[0].id).text(parseInt($("#add_"+$(this)[0].id).text())+1);
         			$("#remove-food_"+$(this)[0].id).css("display","block");
@@ -172,6 +213,12 @@ function getGoodsInfoByTypeId(typeId,typeName){
         			
         			//结算
         			$(".cart-btn-confirm").click(function () {
+        				var shopOpenFlag = $("#shopOpenFlag").val();
+                		if(shopOpenFlag == "1"){
+                			alert("店铺休息中");
+                			return;
+                		}
+                		
         				var tableObj =document.getElementById("carList");
         				var goodsStr = "";
         				for(var i=0;i<tableObj.rows.length;i++){
@@ -190,6 +237,13 @@ function getGoodsInfoByTypeId(typeId,typeName){
         			});
         		});
             	$(".i-remove-food").click(function () {
+            		
+            		var shopOpenFlag = $("#shopOpenFlag").val();
+            		if(shopOpenFlag == "1"){
+            			alert("店铺休息中");
+            			return;
+            		}
+            		
         			var id=$(this)[0].id.split("_")[1];
         			$("#add_"+id).text(parseInt($("#add_"+id).text())-1);
         			if($("#add_"+id).text() == 0){

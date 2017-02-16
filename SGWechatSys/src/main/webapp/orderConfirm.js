@@ -71,6 +71,9 @@ function renderSubmitOrder(){
 		var newTime = new Date(time);
 		var H = newTime.getHours(); //获取小时
 		var M = newTime.getMinutes(); //获取分钟
+		if(M<10){
+			M="0"+M+"";
+		}
 		$("#serviceTime").val(H+":"+M);
 		
 		var serviceTime = $("#serviceTime").val();//送达时间

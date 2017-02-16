@@ -41,6 +41,12 @@ function renderOrderList(openId){
         			 var h = time.getHours();
         			 var mm = time.getMinutes();
         			 var s = time.getSeconds();
+        			 if(mm<10){
+        				 mm="0"+mm+"";
+        		     }
+        			 if(s<10){
+        				 s="0"+s+"";
+        		     }
         			 var createTime = y+"-"+m+"-"+d+" "+h+":"+mm+":"+s;
         			 
         			 $("#order-list").append("<div class='field'>" +

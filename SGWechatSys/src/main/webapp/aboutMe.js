@@ -9,7 +9,7 @@ function renderAboutMe(){
             			 "<div class='detail-region'>"+ 
             		        "<div class='detail-content'>"+
             		          "<div class='detail-phone' style='text-align: center;'>"+
-         		                "<span>"+data.result[i].name+"</span><span>分店"+(i+1)+"</span>"+ 
+         		                "<span>"+data.result[i].name+"</span>"+ 
          		               "</div>"+ 
             		           "<div class='detail-phone'>"+
             		             "<span class='rest-txt'>客服电话：</span>  <span id='phone'>"+data.result[i].phone+"</span>"+ 
@@ -19,7 +19,7 @@ function renderAboutMe(){
             		             "<span id='address'>"+data.result[i].address+"</span>"+ 
             		           "</div>"+ 
             		           "<div class='detail-time'>"+
-            		               "<span class='rest-txt'>配送时间：</span>"+
+            		               "<span class='rest-txt'>营业时间：</span>"+
             		               "<span id='servicetime'>"+data.result[i].servicetime+"</span>"+
             		           "</div>"+ 
             		           "<div class='detail-service'>"+

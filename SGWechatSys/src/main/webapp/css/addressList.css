@@ -45,7 +45,7 @@ a {
     background-position: 0 -84px;
 }
 .icon {
-    background-image: url(//xs01.meituan.net/waimai_i/img/sprite/icon.562e2a26.png);
+    background-image: url(http://101.201.150.141/file/icon.png);
     background-size: 150px 350px;
     display: inline-block;
 }
@@ -104,7 +104,7 @@ p {
     line-height: 50px;
     font-size: 15px;
     color: #000;
-    background: url(//xs01.meituan.net/waimai_i/img/address/address-add1.ceac7fcc.png) no-repeat;
+    background: url(http://101.201.150.141/file/address-add1.png) no-repeat;
     background-size: 15px;
     background-position-y: center;
     display: inline-block;
@@ -131,7 +131,7 @@ ul, ol {
     padding-right: 15px;
 }
 .address-selected .address-info {
-    background: url(//xs01.meituan.net/waimai_i/img/address/address-right1.c45f1cc6.png) no-repeat right 32px;
+    background: url(http://101.201.150.141/file/address-right1.png) no-repeat right 32px;
     -webkit-background-size: 16px 11px;
     -moz-background-size: 16px 11px;
     background-size: 16px 11px;
@@ -178,7 +178,7 @@ ul, ol {
     font-size: 14px;
 }
 .address-selected .address-info {
-    background: url(//xs01.meituan.net/waimai_i/img/address/address-right1.c45f1cc6.png) no-repeat right 32px;
+    background: url(http://101.201.150.141/file/address-right1.png) no-repeat right 32px;
     -webkit-background-size: 16px 11px;
     -moz-background-size: 16px 11px;
     background-size: 16px 11px;
@@ -194,7 +194,7 @@ ul, ol {
     display: inline-block;
     width: 32px;
     height: 32px;
-    background: url(//xs01.meituan.net/waimai_i/img/address/address-edit_dele.d2d09639.png) no-repeat;
+    background: url(http://101.201.150.141/file/address-edit_dele.png) no-repeat;
     -webkit-background-size: 65px 16px;
     -moz-background-size: 65px 16px;
     background-size: 65px 16px;
@@ -210,13 +210,13 @@ a {
     display: inline-block;
     width: 32px;
     height: 32px;
-    background: url(//xs01.meituan.net/waimai_i/img/address/address-edit_dele.d2d09639.png) no-repeat;
+    background: url(http://101.201.150.141/file/address-edit_dele.png) no-repeat;
     -webkit-background-size: 65px 16px;
     -moz-background-size: 65px 16px;
     background-size: 65px 16px;
 }
 .address-noscope .address-info {
-    background: url(//xs01.meituan.net/waimai_i/img/address/address-noscope.ec052639.png) no-repeat right 5px;
+    background: url(http://101.201.150.141/file/address-noscope.png) no-repeat right 5px;
     -webkit-background-size: 58px 58px;
     -moz-background-size: 58px 58px;
     background-size: 58px 58px;

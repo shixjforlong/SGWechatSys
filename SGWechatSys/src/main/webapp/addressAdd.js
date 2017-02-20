@@ -27,7 +27,6 @@ function renderSave(){
             });
 		}
 	}
-	
 	$("#saveAddress").click(function () {
 		//获取页面信息
 		var number = "";
@@ -52,49 +51,34 @@ function renderSave(){
 			alert("请填写收货地址");
 			return;
 		}
-		//判断收货地址是否在配送范围内
-		//根据id获取收货地址的详细信息
 		$.ajax({
             url: "/wapi/map/baidu/getLocation?address="+address,
             type: "GET",
             success: function(data) {
+            	//console.log(data);
             	var addressObj = eval('(' + data + ')');
             	if(addressObj.status =="OK"){
             		var location_c = addressObj.result.location;//收货地址的经纬度
             		if(location_c.lat && location_c.lng){
             			$.ajax({
-            		        url: "/sapi/business/list",
+            		        url: "/wapi/map/IsPtInPoly?lng="+location_c.lng+"&lat="+location_c.lat,
             		        type: "GET",
             		        success: function(data) {
-            		        	var enabled= 0;
-            		            if(data.result.length>0){
-            		            	for(var i=0;i<data.result.length;i++){
-            		            		var lat = data.result[i].lat;
-            		            		var lng = data.result[i].lng;
-            		            		var distance = getDistanceFromXtoY(location_c.lat,location_c.lng,lat,lng);
-            		            		console.log(parseInt(distance));
-            		                	if(parseInt(distance)>5000){
-            		                		enabled = enabled +1;
-            		                	}else{
-            		                		number = data.result[i].number;
-            		                		break;
-            		                	}
-            		            	}
-            		            	if(enabled == data.result.length){
-            		            		alert("不在配送范围");
-            		            	}else{
-            		            	 var data={
-            		            				openId:openId,
-            		            				receiveName:name,
-            		            				receiveGender:gender,
-            		            				receivePhone:phone,
-            		            				receiveAddress:address,
-            		            				enabled:'0',
-            		            				number:number
-            		            	 };
-            		            	 console.log(data);
-            		            	 var paramObj = GetRequest();
-            		            	 if(paramObj && paramObj.addressId){
+            		        	console.log(data);
+            		        	if(data == false){
+            		        		alert("不在配送范围内");
+            		        	}else if(data == true){
+            		        		 var data={
+         		            				openId:openId,
+         		            				receiveName:name,
+         		            				receiveGender:gender,
+         		            				receivePhone:phone,
+         		            				receiveAddress:address,
+         		            				enabled:'0',
+         		            				number:"huilongguan"
+         		            	    };
+            		        		var paramObj = GetRequest();
+            		            	if(paramObj && paramObj.addressId){
             		        			//修改
             		        			$.ajax({
             		        				url:"/wapi/wuAddress/"+paramObj.addressId,
@@ -120,13 +104,11 @@ function renderSave(){
             		        					window.location.href='addressList.html?openId='+openId;
             		        	            }
             		        			});
-            		        		}
-            		              }
-            		            }
+            		        		} 
+            		        		
+            		        	}
             		        }
             			});
-            		}else{
-            			alert("请输入正确的地址");
             		}
             	}else{
             		alert("请输入正确的地址");
@@ -135,6 +117,7 @@ function renderSave(){
 		});
 		
 	});
+	
 }
 function renderSelectGender(){
 	$(".customer-gender-choice").click(function () {

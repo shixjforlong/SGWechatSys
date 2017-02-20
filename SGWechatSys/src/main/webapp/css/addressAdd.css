@@ -60,7 +60,13 @@ h3 {
 .customer-section .fill-type{width:50px;}
 .customer-section .fill-section-right{margin-left:50px;}
 .fill-phone-right{position:relative;}
-.fill-input{width:100%;height:44px;line-height:38px;border:0;font-size:14px;}
+.fill-input{
+	width:98%;
+	height:40px;
+	line-height:40px;
+	border:0;
+	font-size:14px;
+}
 .customer-gender{border-top:1px solid #f0f0f0;height:44px;}
 .customer-gender-choice{float:left;width:50%;height:44px;line-height:44px;padding-left:10px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 .customer-gender-choice .i-circle{float:left;width:16px;height:16px;line-height:16px;border:1px solid #999;margin:12px 8px 0 0;}

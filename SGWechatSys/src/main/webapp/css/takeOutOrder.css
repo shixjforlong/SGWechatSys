@@ -84,14 +84,6 @@ img {
     height: 25px;
     background-position: -15px 0;
 }
-.icon {
-    background-image: url(//xs01.meituan.net/waimai_i/img/sprite/icon.562e2a26.png);
-    background-size: 150px 350px;
-    display: inline-block;
-}
-i {
-    font-style: normal;
-}
 .food-desc {
     margin: 5px 10px 0 0;
     line-height: 15px;
@@ -113,7 +105,7 @@ i {
     background-position: -15px -28px;
 }
 .icon {
-    background-image: url(//xs01.meituan.net/waimai_i/img/sprite/icon.562e2a26.png);
+    background-image: url(http://101.201.150.141/file/icon.png);
     background-size: 150px 350px;
     display: inline-block;
 }

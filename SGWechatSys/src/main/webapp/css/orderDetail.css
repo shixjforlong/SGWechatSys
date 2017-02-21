@@ -69,7 +69,7 @@ orderregion-item .label{float:left;width:72px;color:#898989;}
 .cfm_time_list{margin:0 10px;line-height:32px;font-size:15px;}
 .cfm_time_list li{border-bottom:1px solid #ddd;}
 .cfm_time_list li.hvr{color:#ff6900;}
-.header{background:#fff;border:1px solid #cacaca;}
+.header{background:#A67D3D;border:1px solid #cacaca;}
 .page-name{color:#2f2f2f;}
 .header .i-back{background-position:0 -130px;}
 .coupon-infor{background:rgba(0,0,0,0.4);width:100%;height:30px;line-height:30px;color:#ffffff;font-size:12px;padding-left:14px;}

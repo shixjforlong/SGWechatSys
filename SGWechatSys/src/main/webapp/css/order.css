@@ -12,7 +12,7 @@ a {
 .page-name {
     font-size: 19px;
     line-height: 42px;
-    color: #6b450a;
+    color: white;
     font-weight: bold;
     overflow: hidden;
     white-space: nowrap;
@@ -25,7 +25,8 @@ a {
     position: relative;
 }
 .header {
-	background: #A67D3D;
+	background:#A67D3D; 
+	color: white;
     height: 42px;
     border-bottom: 1px solid #f0f0f0;
 }

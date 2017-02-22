@@ -1,6 +1,6 @@
 body{background:#f8f8f8;}
-.page-header{background:#A67D3D;border-bottom-color:#eaeaea;}
-.page-header .page-name{color:#000;font-weight:normal;}
+.page-header{background:#A67D3D; color: white;border-bottom-color:#eaeaea;}
+.page-header .page-name{color: white;font-weight:normal;}
 .page-header .i-back{background-position:0 -130px;}
 .header .back-wrap {
     position: absolute;

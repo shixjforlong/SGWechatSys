@@ -5,30 +5,14 @@ function renderAboutMe(){
         success: function(data) {
             if(data.result.length>0){
             	for(var i=0;i<data.result.length;i++){
-            		$("#detail-wrap").append(
-            			 "<div class='detail-region'>"+ 
-            		        "<div class='detail-content'>"+
-            		          "<div class='detail-phone' style='text-align: center;'>"+
-         		                "<span>"+data.result[i].name+"</span>"+ 
-         		               "</div>"+ 
-            		           "<div class='detail-phone'>"+
-            		             "<span class='rest-txt'>客服电话：</span>  <span id='phone'>"+data.result[i].phone+"</span>"+ 
-            		           "</div>"+ 
-            		           "<div class='detail-address'>"+
-            		             "<span class='rest-txt'>商家地址：</span>"+ 
-            		             "<span id='address'>"+data.result[i].address+"</span>"+ 
-            		           "</div>"+ 
-            		           "<div class='detail-time'>"+
-            		               "<span class='rest-txt'>营业时间：</span>"+
-            		               "<span id='servicetime'>"+data.result[i].servicetime+"</span>"+
-            		           "</div>"+ 
-            		           "<div class='detail-service'>"+
-            		               "<span class='rest-txt'>配送服务：</span>"+ 
-            		               "<span id='service'>"+data.result[i].service+"</span>"+ 
-            		           "</div>"+ 
-            		       "</div>"+ 
-            		      "</div>" 
+            		$("#lianxi").append(
+            				"<table style='width:100%;margin:5px;'>"+
+            				  "<tr><td><span><B>客服电话:</B></span><span style='margin-left:5px;'>"+data.result[i].phone+"</span>"+"</td></tr>"+
+            				  "<tr><td><span><B>地址:</B></span><span style='margin-left:5px;'>"+data.result[i].address+"</span>"+"</td></tr>"+
+            				  "<tr><td><span><B>营业时间:</B></span><span style='margin-left:5px;'>"+data.result[i].servicetime+"</span>"+"</td></tr>"+
+            				"</table>"
             		);
+            		
             	}
             }
         }
